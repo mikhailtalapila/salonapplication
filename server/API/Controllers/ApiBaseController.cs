@@ -11,9 +11,9 @@ namespace API.Controllers
 {
     public class ApiBaseController : ApiController
     {
-       protected ApplicationDbContext _db;
+       protected SalonDbContext _db;
 
-       public ApiBaseController(ApplicationDbContext db)
+       public ApiBaseController(SalonDbContext db)
        {
           _db = db;
        }

@@ -46,8 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\ApplicationDbContext.cs" />
+    <Compile Include="Configuration\AppointmentConfiguration.cs" />
+    <Compile Include="Configuration\CustomerConfiguration.cs" />
+    <Compile Include="Configuration\EmployeeConfiguration.cs" />
+    <Compile Include="Configuration\EmployeeScheduleConfiguration.cs" />
+    <Compile Include="Configuration\QualificationConfiguration.cs" />
+    <Compile Include="Configuration\ServiceConfiguration.cs" />
+    <Compile Include="Configuration\ServiceTypeConfiguration.cs" />
+    <Compile Include="Configuration\TimeSlotConfiguration.cs" />
+    <Compile Include="Context\SalonDbContext.cs" />
+    <Compile Include="Models\Appointment.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeSchedule.cs" />
+    <Compile Include="Models\Qualification.cs" />
+    <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\ServiceType.cs" />
+    <Compile Include="Models\TimeSlot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

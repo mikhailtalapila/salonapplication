@@ -9,13 +9,14 @@ using System.Web.Http;
 namespace API.Controllers.Customer
 {
    [AllowAnonymous]
-    public class CustomerController : ApiBaseController
+    public class CustomerController: ApiBaseController
     {
-       public CustomerController(ApplicationDbContext db):base(db)
+       public CustomerController(SalonDbContext db):base(db)
        {
 
-       }      
+       }
 
+       
        public IEnumerable<CustomerModel> Get()
        {
           var customers = from c in _db.Customers

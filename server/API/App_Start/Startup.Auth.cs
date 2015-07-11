@@ -8,6 +8,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
+using Microsoft.Owin.Cors;
 using API.Providers;
 using API.Models;
 
@@ -43,6 +44,7 @@ namespace API
             };
 
             // Enable the application to use bearer tokens to authenticate users
+            app.UseCors(CorsOptions.AllowAll);
             app.UseOAuthBearerTokens(OAuthOptions);
 
             // Uncomment the following lines to enable logging in with third party login providers

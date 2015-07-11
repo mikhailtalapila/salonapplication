@@ -9,12 +9,6 @@ namespace DataAccess.Models
 {
    public class Customer
    {
-      public Customer()
-      {
-         Gender = " ";
-         ImageSource = string.Empty;
-      }
-
       public int CustomerId { get; set; }
       public string FirstName { get; set; }
       public string LastName { get; set; }
@@ -25,5 +19,7 @@ namespace DataAccess.Models
       public string Gender { get; set; }
       public string ImageSource { get; set; }
       public string Remarks { get; set; }
+
+      public virtual ICollection<Appointment> CustomerAppointments { get; set; }
    }
 }

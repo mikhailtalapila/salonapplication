@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Web.Http;
 
 namespace API.Controllers.ServiceType
-{
+{   
     public class ServiceTypeController : ApiBaseController
     {
        public ServiceTypeController(SalonDbContext db):base(db)

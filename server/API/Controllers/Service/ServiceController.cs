@@ -32,7 +32,8 @@ namespace API.Controllers.Service
                                                 QualificationId=q.QualificationId,
                                                 EmployeeFirstName=q.Employee.FirstName,
                                                 EmployeeLastName=q.Employee.LastName
-                                             }
+                                             },
+                           ServiceTypeName=s.ServiceType.ServiceTypeName                            
                          };
           return services;
        }
@@ -52,7 +53,8 @@ namespace API.Controllers.Service
                                  QualificationId = q.QualificationId,
                                  EmployeeFirstName = q.Employee.FirstName,
                                  EmployeeLastName = q.Employee.LastName
-                              }
+                              },
+            ServiceTypeName=service.ServiceType.ServiceTypeName
           };
        }
     }

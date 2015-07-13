@@ -1,0 +1,30 @@
+<div class="ng-scope">
+	<div class="wrapper">
+		<div class="col-md-12">
+		<button class="btn btn-success" ng-click="populateEmployees()">Populate Employees</button>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Name</th>
+					<th>Remarks</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="employee in employees">
+				<tr>
+					<td>
+						<img ng-src="{{employee.imageSource}}"
+					</td>
+					<td>{{employee.firstName}} {{employee.lastName}}</td>
+					<td>{{employee.remarks}}</td>
+					<th>
+						<a href="#employees" class="btn btn-success" >Details</a>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+		</div>	
+	</div>
+</div>

@@ -1,0 +1,28 @@
+<div class="ng-scope">
+	<div class="wrapper">
+		<div class="col-md-12">
+		<button class="btn btn-success" ng-click="populateServices()">Populate Services</button>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Service Name</th>
+					<th>Price</th>
+					<th>Category</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="service in services">
+				<tr>					
+					<td>{{service.serviceName}}</td>
+					<td>{{service.price | currency}}</td>
+					<td>{{service.serviceTypeName}}</td>
+					<th>
+						<a href="#services" class="btn btn-success" >Details</a>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+		</div>	
+	</div>
+</div>

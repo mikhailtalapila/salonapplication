@@ -17,19 +17,43 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router',
+    'ngToast'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
+  .config(['$stateProvider','$urlRouterProvider','$httpProvider','ngToastProvider',
+    function ($stateProvider,$urlRouterProvider,$httpProvider,ngToastProvider) {
+      ngToastProvider.configure({
+        dismissalButton:true
       });
-  });
+
+      $urlRouterProvider.otherwise('/');
+
+      $stateProvider
+        .state('login',{
+          templateUrl:"views/login.html",
+          controller:'LoginCtrl'
+        })
+        .state('main',{
+            url:"/main",
+            templateUrl:"/views/main.html",
+            controller:'MainCtrl'
+        })
+        .state('employees',{
+            url:"/employees",
+            templateUrl:"/views/employees.html",
+            controller:'EmployeesCtrl'
+        })
+        .state('customers',{
+            url:"/customers",
+            templateUrl:"/views/customers.html",
+            controller:'CustomersCtrl'
+        })
+        .state('services',{
+            url:"/services",
+            templateUrl:"/views/services.html",
+            controller:'ServicesCtrl'
+        });
+    
+    }]);
+

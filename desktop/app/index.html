@@ -39,10 +39,8 @@
       </div>
     </div>
 
-    <div class="container">
-    <div ui-view=""></div>
-    </div>
-
+    
+<div ui-view></div>
     
     
 
@@ -67,10 +65,20 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/customers.js"></script>
-        <script src="scripts/controllers/employees.js"></script>
-        <script src="scripts/controllers/services.js"></script>
+        <script src="scripts/controllers/customers/customers.js"></script>
+        <script src="scripts/controllers/customers/customersDetails.js"></script>
+        <script src="scripts/controllers/customers/customersList.js"></script>
+        <script src="scripts/controllers/employees/employees.js"></script>
+        <script src="scripts/controllers/employees/employeesDetails.js"></script>
+        <script src="scripts/controllers/employees/employeesList.js"></script>
+        <script src="scripts/controllers/services/services.js"></script>
+        <script src="scripts/controllers/services/servicesList.js"></script>
+        <script src="scripts/controllers/services/servicesDetails.js"></script>
+        <script src="scripts/resources/employee.js"></script>
+        <script src="scripts/resources/customer.js"></script>
+        <script src="scripts/resources/service.js"></script>
         <script src="scripts/filters/phoneNumber.js"></script>
+        <script src="scripts/services/apiHttpInterceptor.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -1,7 +1,6 @@
-<div class="ng-scope">
+<div>
 	<div class="wrapper">
 		<div class="col-md-12">
-		<button class="btn btn-success" ng-click="populateCustomers()">Populate Customers</button>
 
 		<table class="table table-striped">
 			<thead>
@@ -18,7 +17,7 @@
 					<td>{{customer.phoneNumber | tel}}</td>
 					<td>{{customer.remarks}}</td>
 					<td>
-						<a href="#customers" class="btn btn-success" >Details</a>
+						<a ng-click="viewDetails(customer.customerId)" class="btn btn-success" >Details</a>
 					</td>
 				</tr>
 			</tbody>

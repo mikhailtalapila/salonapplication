@@ -1,0 +1,13 @@
+<h1>Service details</h1>
+<div>{{service.serviceName}}</div>
+<div>{{service.price | currency }}</div>
+<div>
+Employees who qualify
+<ul>
+	<li ng-repeat='qualification in service.qualifications'>
+		{{qualification.employeeFirstName}} {{qualification.employeeLastName}}
+	</li>
+</ul>
+</div>
+
+<a ui-sref='services.list'>Back</a>

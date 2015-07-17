@@ -1,0 +1,28 @@
+<div class="ng-scope">
+	<div class="wrapper">
+		<div class="col-md-12">
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Service</th>
+					<th>Price</th>
+					<th>Category</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="service in services">
+				<tr>					
+					<td>{{service.serviceName}}</td>
+					<td>{{service.price | currency}}</td>
+					<td>{{service.serviceTypeName}}</td>
+					<th>
+						<a ng-show="service.serviceId" ng-click='viewDetails(service.serviceId)' class="btn btn-success" >Details</a>
+
+					</th>
+				</tr>
+			</tbody>
+		</table>
+		</div>	
+	</div>
+</div>

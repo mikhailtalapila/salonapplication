@@ -27,7 +27,7 @@ angular
         dismissalButton:true
       });
 
-      $urlRouterProvider.otherwise('/');
+      $urlRouterProvider.otherwise('/main');
 
       $stateProvider
         .state('login',{
@@ -41,19 +41,53 @@ angular
         })
         .state('employees',{
             url:"/employees",
-            templateUrl:"/views/employees.html",
+            templateUrl:"/views/employees/employees.html",
             controller:'EmployeesCtrl'
         })
+            .state('employees.list',{
+              url: '/employeeslist',
+              templateUrl:"/views/employees/employeesList.html",
+              controller:'EmployeesListCtrl'
+            })
+            .state('employees.details',{
+              url: '/employeedetails/:id',
+              templateUrl: '/views/employees/employeesDetails.html',
+              controller:'EmployeesDetailsCtrl'
+            })
         .state('customers',{
             url:"/customers",
-            templateUrl:"/views/customers.html",
+            templateUrl:"/views/customers/customers.html",
             controller:'CustomersCtrl'
         })
+            .state('customers.list',{
+              url:"/customerslist",
+              templateUrl:'/views/customers/customersList.html',
+              controller:'CustomersListCtrl'
+            })
+            .state('customers.details',{
+              url:'/customersdetails/:id',
+              templateUrl:'/views/customers/customersDetails.html',
+              controller:'CustomersDetailsCtrl'
+            })
         .state('services',{
             url:"/services",
-            templateUrl:"/views/services.html",
+            templateUrl:"/views/services/services.html",
             controller:'ServicesCtrl'
-        });
+        })
+            .state('services.list',{
+              url:"/serviceslist",
+              templateUrl:'/views/services/serviceslist.html',
+              controller:'ServicesListCtrl'
+            })
+            .state('services.details',{
+              url:"/servicesdetails/:id",
+              templateUrl:'/views/services/servicesDetails.html',
+              controller:'ServicesDetailsCtrl'
+            });
+          $httpProvider.interceptors.push('apiHttpInterceptor');
     
     }]);
+angular.element(document).ready(function(){
+  window.ApiUrl='http://localhost:60606';
+});
 

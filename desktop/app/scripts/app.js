@@ -27,18 +27,28 @@ angular
         dismissalButton:true
       });
 
-      $urlRouterProvider.otherwise('/main');
+      $urlRouterProvider.otherwise('/appontments');
 
       $stateProvider
         .state('login',{
           templateUrl:"views/login.html",
           controller:'LoginCtrl'
         })
-        .state('main',{
-            url:"/main",
-            templateUrl:"/views/main.html",
-            controller:'MainCtrl'
-        })
+        .state('appointments',{
+            url:"/appointments",
+            templateUrl:"/views/appointments/appointments.html",
+            controller:'AppointmentsCtrl'
+        })  
+            .state('appointments.list',{
+              url:'/appontmentslist',
+              templateUrl:'/views/appointments/appointmentsList.html',
+              controller:'AppointmentsListCtrl'
+            })
+            .state('appointments.details',{
+              url:'/appointmentdetails/:id',
+              templateUrl:'/views/appointments/appointmentsDetails.html',
+              controller:'AppointmentsDetailsCtrl'
+            })
         .state('employees',{
             url:"/employees",
             templateUrl:"/views/employees/employees.html",
@@ -83,6 +93,41 @@ angular
               url:"/servicesdetails/:id",
               templateUrl:'/views/services/servicesDetails.html',
               controller:'ServicesDetailsCtrl'
+            })
+        .state('employeesSchedule',{
+          url:'/employeesSchedule',
+          templateUrl:'/views/employeesSchedule/employeesSchedule.html',
+          controller:'EmployeesScheduleCtrl'
+        })
+            .state('employeesSchedule.list',{
+              url:'/employeesScheduleList',
+              templateUrl:'/views/employeesSchedule/employeesschedulelist.html',
+              controller:'EmployeesScheduleListCtrl'
+            })
+        .state('populateEmployeeSchedules',{
+          url:'/populateEmployeeSchedules',
+          templateUrl:'/views/employeesSchedule/populateEmployeeSchedules.html',
+          controller:'PopulateEmployeeSchedulesCtrl'
+        })
+        .state('employeesManagement',{
+          url:'/employeesManagement',
+          templateUrl:'/views/employeesManagement/employeesManagement.html',
+          controller:'EmployeesManagementCtrl'
+        })
+        .state('reports',{
+          url:'/reports',
+          templateUrl:'/views/reports/reports.html',
+          controller:'ReportsCtrl'
+        })
+            .state('reports.list',{
+              url:'/reportsList',
+              templateUrl:'/views/reports/reportsList.html',
+              controller:'ReportsListCtrl'
+            })
+            .state('reports.details',{
+              url:'/reportsdetails',
+              templateUrl:'/views/reports/reportsDetails.html',
+              controller:'ReportsDetailsCtrl'
             });
           $httpProvider.interceptors.push('apiHttpInterceptor');
     

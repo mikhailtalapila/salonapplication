@@ -1,0 +1,35 @@
+<div>
+	<div class="wrapper">
+		<div class="col-md-12">
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Customer Name</th>
+					<th>Appt time</th>
+					<th>Appt duration</th>					
+					<th>Service</th>					
+					<th>Employee</th>					
+					<th>Paid</th>					
+					<th>Remarks</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="appointment in appointments">
+				<tr>
+					<td>{{appointment.customerFirstName}} {{appointment.customerLastName}}</td>
+					<td>{{appointment.appointmentStartTime}}</td>
+					<td>{{appointment.appointmentDurationInMins}}</td>
+					<td>{{appointment.serviceName}}</td>
+					<td>{{appointment.employeeFirstName}} {{appointment.employeeLastName}}</td>
+					<td>{{appointment.customerPaid}}</td>
+					<td>{{appointment.appointmentRemarks}}</td>
+					<td>
+						<a ng-click="viewDetails(appointment.appointmentId)" class="btn btn-success" >Details</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>	
+	</div>
+</div>

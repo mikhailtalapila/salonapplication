@@ -1,0 +1,30 @@
+<div>
+	<div class="wrapper">
+	<a ui-sref='populateEmployeeSchedules'>Populate Employee Schedules</a>
+		<div class="col-md-12">
+
+		<div>Employee Schedule List
+			<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Employee Name</th>
+					<th>Shift Date</th>
+					<th>Shift duration</th>					
+					<th></th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="schedule in employeesSchedules">
+				<tr>
+					<td>{{schedule.employeeFirstName}} {{schedule.employeeLastName}}</td>
+					<td>{{schedule.timeSlotStart}}</td>
+					<td>{{schedule.timeSlotDuration}}</td>
+					<td>
+						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		</div>	
+	</div>
+</div>

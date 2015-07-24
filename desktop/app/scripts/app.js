@@ -19,7 +19,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'ngToast'
+    'ngToast',
+    'ui.bootstrap'
   ])
   .config(['$stateProvider','$urlRouterProvider','$httpProvider','ngToastProvider',
     function ($stateProvider,$urlRouterProvider,$httpProvider,ngToastProvider) {

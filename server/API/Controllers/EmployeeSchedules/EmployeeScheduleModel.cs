@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace API.Controllers.EmployeeSchedule
+namespace API.Controllers.EmployeeSchedules
 {
    public class EmployeeScheduleModel
    {

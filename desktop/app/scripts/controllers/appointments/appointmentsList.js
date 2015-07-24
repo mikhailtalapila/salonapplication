@@ -8,7 +8,7 @@ angular.module('desktopApp')
     	});
 
     	$scope.populateAppointmentsList=function(){
-  			$http.get('http://localhost:60606/api/appointment')
+  			$http.get('http://localhost:60606/api/appointments')
   				.success(function(response){
   					if(response.length!==0){
   						$scope.appointments=response;

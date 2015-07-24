@@ -1,7 +1,9 @@
-﻿using API.Controllers.Appointment;
-using API.Controllers.EmployeeSchedule;
-using API.Controllers.Qualification;
+﻿using API.Controllers.Appointments;
+using API.Controllers.Employees;
+using API.Controllers.EmployeeSchedules;
+using API.Controllers.Qualifications;
 using DataAccess.Context;
+using DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +11,17 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace API.Controllers.Employee
+namespace API.Controllers.Employees
 {
-    public class EmployeeController : ApiBaseController
+    public class EmployeesController : ApiBaseController
     {
-       public EmployeeController(SalonDbContext db):base(db)
+       public EmployeesController(SalonDbContext db):base(db)
        {
 
        }
 
-       public IEnumerable<EmployeeModel> Get()
+       // GET api/employees
+       public HttpResponseMessage Get()
        {
           var employees = from e in _db.Employees
                           orderby e.EmployeeId
@@ -38,7 +41,7 @@ namespace API.Controllers.Employee
                                               },
                              Appointments = from a in e.EmployeeAppointments
                                             orderby a.Start
-                                            select new AppointmentModel
+                                            select new AppointmentOutModel
                                             {
                                                AppointmentId = a.AppointmentId,
                                                CustomerFirstName = a.Customer.FirstName,
@@ -63,13 +66,17 @@ namespace API.Controllers.Employee
                                                     TimeSlotDuration = es.TimeSlot.Duration
                                                  }
                           };
-          return employees;
+          if (employees == null) throw new HttpResponseException(HttpStatusCode.NotFound);
+          return Request.CreateResponse<IEnumerable<EmployeeModel>>(HttpStatusCode.OK, employees);
+          
        }
 
-       public EmployeeModel get(int id)
+
+       // GET api/employees/5
+       public HttpResponseMessage Get(int id)
        {
           var employee = _db.Employees.FirstOrDefault(e => e.EmployeeId == id);
-          return new EmployeeModel
+          var emp= new EmployeeModel
           {
              EmployeeId = employee.EmployeeId,
              FirstName = employee.FirstName,
@@ -85,7 +92,7 @@ namespace API.Controllers.Employee
                               },
              Appointments = from a in employee.EmployeeAppointments
                             orderby a.Start
-                            select new AppointmentModel
+                            select new AppointmentOutModel
                             {
                                AppointmentId = a.AppointmentId,
                                CustomerFirstName = a.Customer.FirstName,
@@ -110,6 +117,58 @@ namespace API.Controllers.Employee
                                     TimeSlotDuration = es.TimeSlot.Duration
                                  }
           };
+          if (emp == null) throw new HttpResponseException(HttpStatusCode.NotFound);
+          return Request.CreateResponse<EmployeeModel>(HttpStatusCode.OK, emp);
+       }
+
+       // POST api/employees
+       public HttpResponseMessage Post([FromBody] EmployeeModel value)
+       {
+          var employee = new Employee
+             {
+                FirstName = value.FirstName,
+                LastName = value.LastName,
+                ImageSource = value.ImageSource,
+                Remarks = value.Remarks
+             };
+          var emp=_db.Employees.Add(employee);
+          _db.SaveChanges();
+          if (emp != null)
+          {
+             var msg = new HttpResponseMessage(HttpStatusCode.Created);
+             msg.Headers.Location = new Uri(Request.RequestUri + "/" + employee.EmployeeId.ToString());
+             return msg;
+          }
+          else
+          {
+            var msg = new HttpResponseMessage(HttpStatusCode.BadRequest);
+            return msg;
+          }
+       }
+
+       // PUT api/employees/4
+       public HttpResponseMessage Put(int id, [FromBody] Employee emp)
+       {
+          var status = _db.Employees.Attach(emp);
+          var entry = _db.Entry(emp);
+          entry.Property(e => e.FirstName).IsModified = true;
+          entry.Property(e => e.LastName).IsModified = true;
+          entry.Property(e => e.ImageSource).IsModified = true;
+          entry.Property(e => e.Remarks).IsModified = true;
+          _db.SaveChanges();
+          if (status != null) return new HttpResponseMessage(HttpStatusCode.OK);
+          throw new HttpResponseException(HttpStatusCode.NotFound);
+       }
+
+       // DELETE api/employees/7
+       public HttpResponseMessage Delete(int id)
+       {
+          var emp = new Employee { EmployeeId = id };
+          _db.Employees.Attach(emp);
+          var status = _db.Employees.Remove(emp);
+          _db.SaveChanges();
+          if (status != null) return new HttpResponseMessage(HttpStatusCode.OK);
+          throw new HttpResponseException(HttpStatusCode.NotFound);
        }
     }
 }

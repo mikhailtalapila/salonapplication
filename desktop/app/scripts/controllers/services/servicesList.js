@@ -3,7 +3,7 @@ angular.module('desktopApp')
   .controller('ServicesListCtrl', ['$scope','$http','$state',function($scope,$http,$state){
   	$scope.results=null;
   	$scope.populateServices=function(){
-  		$http.get('http://localhost:60606/api/service')
+  		$http.get('http://localhost:60606/api/services')
   			.success(function(response){
   				if(response.length!=0){
   					$scope.services=response;

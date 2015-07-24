@@ -1,10 +1,10 @@
-﻿using API.Controllers.Service;
+﻿using API.Controllers.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace API.Controllers.ServiceType
+namespace API.Controllers.ServiceTypes
 {
    public class ServiceTypeModel
    {

@@ -1,10 +1,10 @@
-﻿using API.Controllers.Appointment;
+﻿using API.Controllers.Appointments;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace API.Controllers.Customer
+namespace API.Controllers.Customers
 {
    public class CustomerModel
    {
@@ -17,6 +17,6 @@ namespace API.Controllers.Customer
       public string Gender { get; set; }
       public string ImageSource { get; set; }
       public string Remarks { get; set; }
-      public IEnumerable<AppointmentModel> Appointments { get; set; }
+      public IEnumerable<AppointmentOutModel> Appointments { get; set; }
    }
 }

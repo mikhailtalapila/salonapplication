@@ -1,7 +1,7 @@
 'use strict';
 angular.module('desktopApp')
 	.factory('Service',['$resource',function ($resource) {
-		return $resource('/api/service/:id', {id:'@id'},
+		return $resource('/api/services/:id', {id:'@id'},
 			{
 				query: {
 					method:'GET',

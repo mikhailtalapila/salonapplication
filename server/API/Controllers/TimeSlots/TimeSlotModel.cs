@@ -1,10 +1,10 @@
-﻿using API.Controllers.EmployeeSchedule;
+﻿using API.Controllers.EmployeeSchedules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace API.Controllers.TimeSlot
+namespace API.Controllers.TimeSlots
 {
    public class TimeSlotModel
    {

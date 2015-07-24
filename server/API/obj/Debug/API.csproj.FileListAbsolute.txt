@@ -68,6 +68,6 @@ C:\Users\Kyle\Documents\SalonApplication\server\API\bin\Ninject.xml
 C:\Users\Kyle\Documents\SalonApplication\server\API\bin\Microsoft.Owin.Cors.dll
 C:\Users\Kyle\Documents\SalonApplication\server\API\bin\System.Web.Cors.dll
 C:\Users\Kyle\Documents\SalonApplication\server\API\bin\Microsoft.Owin.Cors.xml
-C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Debug\API.Migrations.Migration1.resources
+C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Debug\API.Migrations.Init.resources
 C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Debug\API.csproj.GenerateResource.Cache
-C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Debug\API.Migrations.Migration2.resources
+C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Debug\API.Migrations.AddServiceTypeId.resources

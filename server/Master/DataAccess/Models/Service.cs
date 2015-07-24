@@ -11,6 +11,7 @@ namespace DataAccess.Models
       public int ServiceId { get; set; }
       public string ServiceName { get; set; }
       public decimal Price { get; set; }
+      public int ServiceTypeId { get; set; }
 
       public virtual ServiceType ServiceType { get; set; }
       public virtual ICollection<Appointment> Appointments { get; set; }

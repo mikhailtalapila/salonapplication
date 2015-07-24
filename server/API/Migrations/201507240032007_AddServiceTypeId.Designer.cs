@@ -7,13 +7,13 @@ namespace API.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class Migration1 : IMigrationMetadata
+    public sealed partial class AddServiceTypeId : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Migration1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddServiceTypeId));
         
         string IMigrationMetadata.Id
         {
-            get { return "201507102357207_Migration1"; }
+            get { return "201507240032007_AddServiceTypeId"; }
         }
         
         string IMigrationMetadata.Source

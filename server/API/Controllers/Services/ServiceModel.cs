@@ -1,12 +1,13 @@
-﻿using API.Controllers.Appointment;
-using API.Controllers.Qualification;
-using API.Controllers.ServiceType;
+﻿using API.Controllers.Appointments;
+using API.Controllers.Qualifications;
+using API.Controllers.ServiceTypes;
+using DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace API.Controllers.Service
+namespace API.Controllers.Services
 {
    public class ServiceModel
    {

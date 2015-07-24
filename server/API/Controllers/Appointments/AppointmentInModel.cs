@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace API.Controllers.Appointment
+namespace API.Controllers.Appointments
 {
-   public class AppointmentModel
+   public class AppointmentInModel
    {
       public int AppointmentId { get; set; }
-      public string CustomerFirstName { get; set; }
-      public string CustomerLastName { get; set; }
+      public string CustomerPhoneNumber { get; set; }
       public string EmployeeFirstName { get; set; }
       public string EmployeeLastName { get; set; }
       public string ServiceName { get; set; }

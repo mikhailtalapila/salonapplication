@@ -1,7 +1,7 @@
 'use strict';
 angular.module('desktopApp')
 	.factory('Customer',['$resource',function ($resource) {
-		return $resource('/api/Customer/:id', {id:'@id'},
+		return $resource('/api/Customers/:id', {id:'@id'},
 			{
 				query: {
 					method:'GET',
@@ -17,6 +17,7 @@ angular.module('desktopApp')
 						return JSON.parse(data);
 					}
 				},
-				someothertask: {method: 'POST', isArray: false, url: '/api/customer/someotheruri'}
+				update: {method: 'PUT', isArray: false},
+				create: {method: 'POST'}
 			});
 	}]);

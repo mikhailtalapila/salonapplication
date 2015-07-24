@@ -183,33 +183,34 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiBaseController.cs" />
-    <Compile Include="Controllers\Appointment\AppointmentController.cs" />
-    <Compile Include="Controllers\Appointment\AppointmentModel.cs" />
-    <Compile Include="Controllers\Customer\CustomerController.cs" />
-    <Compile Include="Controllers\Customer\CustomerModel.cs" />
-    <Compile Include="Controllers\EmployeeSchedule\EmployeeScheduleController.cs" />
-    <Compile Include="Controllers\EmployeeSchedule\EmployeeScheduleModel.cs" />
-    <Compile Include="Controllers\Employee\EmployeeController.cs" />
-    <Compile Include="Controllers\Employee\EmployeeModel.cs" />
-    <Compile Include="Controllers\Qualification\QualificationController.cs" />
-    <Compile Include="Controllers\Qualification\QualificationModel.cs" />
-    <Compile Include="Controllers\ServiceType\ServiceTypeController.cs" />
-    <Compile Include="Controllers\ServiceType\ServiceTypeModel.cs" />
-    <Compile Include="Controllers\Service\ServiceController.cs" />
-    <Compile Include="Controllers\Service\ServiceModel.cs" />
-    <Compile Include="Controllers\TimeSlot\TimeSlotController.cs" />
-    <Compile Include="Controllers\TimeSlot\TimeSlotModel.cs" />
+    <Compile Include="Controllers\Appointments\AppointmentOutModel.cs" />
+    <Compile Include="Controllers\Appointments\AppointmentsController.cs" />
+    <Compile Include="Controllers\Appointments\AppointmentInModel.cs" />
+    <Compile Include="Controllers\Customers\CustomersController.cs" />
+    <Compile Include="Controllers\Customers\CustomerModel.cs" />
+    <Compile Include="Controllers\EmployeeSchedules\EmployeeScheduleController.cs" />
+    <Compile Include="Controllers\EmployeeSchedules\EmployeeScheduleModel.cs" />
+    <Compile Include="Controllers\Employees\EmployeesController.cs" />
+    <Compile Include="Controllers\Employees\EmployeeModel.cs" />
+    <Compile Include="Controllers\Qualifications\QualificationController.cs" />
+    <Compile Include="Controllers\Qualifications\QualificationModel.cs" />
+    <Compile Include="Controllers\ServiceTypes\ServiceTypesController.cs" />
+    <Compile Include="Controllers\ServiceTypes\ServiceTypeModel.cs" />
+    <Compile Include="Controllers\Services\ServicesController.cs" />
+    <Compile Include="Controllers\Services\ServiceModel.cs" />
+    <Compile Include="Controllers\TimeSlots\TimeSlotsController.cs" />
+    <Compile Include="Controllers\TimeSlots\TimeSlotModel.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507102357207_Migration1.cs" />
-    <Compile Include="Migrations\201507102357207_Migration1.Designer.cs">
-      <DependentUpon>201507102357207_Migration1.cs</DependentUpon>
+    <Compile Include="Migrations\201507240011377_Init.cs" />
+    <Compile Include="Migrations\201507240011377_Init.Designer.cs">
+      <DependentUpon>201507240011377_Init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507110000026_Migration2.cs" />
-    <Compile Include="Migrations\201507110000026_Migration2.Designer.cs">
-      <DependentUpon>201507110000026_Migration2.cs</DependentUpon>
+    <Compile Include="Migrations\201507240032007_AddServiceTypeId.cs" />
+    <Compile Include="Migrations\201507240032007_AddServiceTypeId.Designer.cs">
+      <DependentUpon>201507240032007_AddServiceTypeId.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -248,11 +249,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507102357207_Migration1.resx">
-      <DependentUpon>201507102357207_Migration1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507240011377_Init.resx">
+      <DependentUpon>201507240011377_Init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507110000026_Migration2.resx">
-      <DependentUpon>201507110000026_Migration2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201507240032007_AddServiceTypeId.resx">
+      <DependentUpon>201507240032007_AddServiceTypeId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

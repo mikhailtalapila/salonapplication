@@ -1,0 +1,33 @@
+<div class="row about-my-goals margin-bottom-20">
+            <div class="col-md-2 md-margin-bottom-20">    
+                <a ui-sref='appointments.list'>Back</a>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-sm-6 info-blocks">
+                        <p>{{appointment.customerFirstName}} {{appointment.customerLastName}}</p>
+                        <p>{{appointment.serviceName}}</p>
+                        <p>{{appointment.serivcePrice | currency}}</p>
+                        <p>{{appointment.appointmentStartTime}}</p>
+                        <p>{{appointment.appointmentDurationInMins}}</p>
+                        <p>Customer paid: {{appointment.customerPaid}}</p>
+                        <p>{{appointment.appointmentConfirmation}}</p>
+                        <p>{{appointment.appointmentRemarks}}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-2">
+                <div class="row">
+                    <div class="col-sm-6 info-blocks">
+                        <p>Employee name: {{appointment.employeeFirstName}} {{appointment.employeeLastName}}</p>
+                    </div>
+                    <div class="col-sm-6 info-blocks">
+                        <p>Employee is requested: {{appointment.isEmployeeRequested}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div> 
+ 
+ 

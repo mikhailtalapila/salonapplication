@@ -1,0 +1,32 @@
+[
+  {
+    "text": "Navigation",
+    "heading": "true",
+    "translate": "sidebar.heading.HEADER"
+  },
+  {
+    "text": "Customers",
+    "sref": "app.customers",
+    "icon": "icon-user"
+  },
+  {
+    "text": "Services",
+    "sref": "app.services",
+    "icon": "icon-energy"
+  },
+  {
+    "text": "Employees",
+    "sref": "app.employees",
+    "icon": "icon-emoticon-smile"
+  },
+  {
+    "text": "Employees Schedules",
+    "sref": "app.employeesSchedule",
+    "icon": "icon-list"
+  },
+  {
+    "text": "Reports",
+    "sref": "app.reports",
+    "icon": "icon-bar-chart"
+  }
+]

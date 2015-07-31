@@ -241,6 +241,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+    <None Include="Properties\PublishProfiles\SalonApi.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Master\DataAccess\DataAccess.csproj">

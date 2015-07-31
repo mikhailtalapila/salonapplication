@@ -1,0 +1,41 @@
+
+<div class="container content">
+        
+        <div class="row about-my-goals margin-bottom-20">
+            
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-sm-6 info-blocks">
+                        <p>{{employeeSchedule.employeeScheduleId}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 info-blocks">
+                        <ul class="list-unstyled">
+                             {{employeeSchedule.employeeFirstName}} {{employeeSchedule.employeeLastName}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-sm-6 info-blocks">
+                        <p>{{employeeSchedule.timeSlotStart}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 info-blocks">
+                        <ul class="list-unstyled">
+                             {{employeeSchedule.timeSlotDuration}} 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>    
+        
+    </div>
+<a ui-sref='employeesSchedule.list'>Back</a>

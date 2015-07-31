@@ -13,13 +13,13 @@
 					<th></th>
 				</tr>
 			</thead>
-			<tbody ng-repeat="schedule in employeesSchedules">
+			<tbody ng-repeat="schedule in employeeSchedules">
 				<tr>
 					<td>{{schedule.employeeFirstName}} {{schedule.employeeLastName}}</td>
 					<td>{{schedule.timeSlotStart}}</td>
 					<td>{{schedule.timeSlotDuration}}</td>
 					<td>
-						
+						<a ng-click="viewDetails(schedule.employeeScheduleId)" class="btn btn-success" >Details</a>
 					</td>
 				</tr>
 			</tbody>

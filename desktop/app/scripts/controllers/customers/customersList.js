@@ -61,21 +61,6 @@ angular.module('desktopApp')
       });
     };
 
-    $scope.removeCustomer=function() {
-      var custName=$scope.customer.firstName+' '+$scope.customer.lastName;
-      var modalOptions = {
-        closeButtonText:'Cancel',
-        actionButtonText:'Delete Customer',
-        headerText:'Delete '+custName+'?',
-        bodyText:'Are you sure you want to delete this customer?'
-      };
-      modalService.showModal({},modalOptions).then(function(result){
-        dataService.deleteCustomer($scope.customer.id).then(function(){
-          $location.path('/customers');
-        },processError);
-      });
-    }
-
     $scope.insertCustomer=function() {
       var cust= {
         customerId:10,
@@ -83,7 +68,7 @@ angular.module('desktopApp')
         lastName:'Smith'
       };
       customerDataFactory.insertCustomer(cust)
-        success(function() {
+        .success(function() {
           $scope.status='Inserted Customer! Refreshing customer list';
           $scope.customers.push(cust);
         })
@@ -111,7 +96,16 @@ angular.module('desktopApp')
     };
 
 
-    
+    $scope.getAppointments=function(id) {
+       customerDataFactory.getAppointments(id)
+        .success(function(appointments){
+          $scope.status='Retrieved appointments!';
+          $scope.appointments=appointments;
+        })
+        .error(function(error){
+          $scope.status='Error retrieving appointments '+error.message;
+        });
+    };   
 
     
   }]);

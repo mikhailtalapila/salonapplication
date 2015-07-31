@@ -1,0 +1,10 @@
+C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\bin\Release\DataAccess.dll.config
+C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\bin\Release\DataAccess.dll
+C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\bin\Release\DataAccess.pdb
+C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\bin\Release\EntityFramework.dll
+C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\bin\Release\EntityFramework.xml
+C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\obj\Release\DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\obj\Release\DataAccess.dll
+C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\obj\Release\DataAccess.pdb

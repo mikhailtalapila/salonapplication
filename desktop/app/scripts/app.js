@@ -1,18 +1,14 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name desktopApp
- * @description
- * # desktopApp
- *
- * Main module of the application.
- */
-angular
+if(typeof $==='undefined') { throw new Error('This application\'s Javascript requires jQuery'); }
+
+var App=angular
   .module('desktopApp', [
-    'ngAnimate',
+    'ngAnimate',    
+    'ngStorage',
     'ngAria',
     'ngCookies',
+    'pascalprecht.translate',
     'ngMessages',
     'ngResource',
     'ngRoute',
@@ -21,16 +17,59 @@ angular
     'ui.router',
     'ngToast',
     'ui.bootstrap'
-  ])
-  .config(['$stateProvider','$urlRouterProvider','$httpProvider','ngToastProvider',
-    function ($stateProvider,$urlRouterProvider,$httpProvider,ngToastProvider) {
+  ]);
+
+App.run(['$rootScope', '$state', '$stateParams', '$window', '$templateCache', function ($rootScope, $state, $stateParams, $window, $templateCache) {
+  $rootScope.$state=$state;
+  $rootScope.$stateParams=$stateParams;
+  $rootScope.$storage=$window.localStorage;
+
+  $rootScope.app = {
+    name:'Desktop app',
+    description: 'Salon application',
+    year: ((new Date()).getFullYear()),
+    layout: {
+      isFixed: true,
+      isCollapsed: false,
+      isBoxed: false,
+      isRTL: false,
+      horizontal: false,
+      isFloat: false,
+      asideHover: false,
+      theme: null
+    },
+    useFullLayout: false,
+    hiddenFooter: false,
+    offsidebarOpen: false,
+    asideToggled: false,
+    viewAnimation: 'ng-fadeInUp'
+  };
+
+  $rootScope.user= {
+  name: 'Mikhail',
+  job: 'ng-developer',
+  picture:'mikhail-developer-pic.jpg'
+  };
+}]);
+
+App.config(['$stateProvider','$locationProvider','$urlRouterProvider','$httpProvider','ngToastProvider',
+    function ($stateProvider, $locationProvider, $urlRouterProvider, $httpProvider, ngToastProvider) {
+      'use strict';
+
+      $locationProvider.html5Mode(false);
+
       ngToastProvider.configure({
         dismissalButton:true
       });
 
-      $urlRouterProvider.otherwise('/appontments');
+      $urlRouterProvider.otherwise('/app');
 
       $stateProvider
+        .state('app', {
+          url:'/app',
+          templateUrl:'/views/app.html',
+          controller:'AppController'
+        })
         .state('login',{
           templateUrl:"views/login.html",
           controller:'LoginCtrl'
@@ -105,6 +144,11 @@ angular
               templateUrl:'/views/employeesSchedule/employeesschedulelist.html',
               controller:'EmployeesScheduleListCtrl'
             })
+            .state('employeesSchedule.details',{
+              url:'/employeesScheduleDetails/:id',
+              templateUrl:'/views/employeesSchedule/employeesScheduleDetails.html',
+              controller:'EmployeesScheduleDetailsCtrl'
+            })
         .state('populateEmployeeSchedules',{
           url:'/populateEmployeeSchedules',
           templateUrl:'/views/employeesSchedule/populateEmployeeSchedules.html',
@@ -133,6 +177,82 @@ angular
           $httpProvider.interceptors.push('apiHttpInterceptor');
     
     }]);
+App.config(['$translateProvider',function($translateProvider) {
+  $translateProvider.useStaticFilesLoader({
+    prefix: 'app/i18n',
+    suffix: '.json'
+  });
+  $translateProvider.preferredLanguage('en');
+  $translateProvider.useLocalStorage();
+  $translateProvider.usePostCompiling(true);   
+}])
+;
+
+App.controller('AppController',['$rootScope','$scope','$state','$window','$localStorage','$timeout',
+  function ($rootScope, $scope, $state, $window, $localStorage, $timeout) {
+    'use strict';
+
+    $rootScope.app.layout.horizontal= ($rootScope.$stateParams.layout=='app-h');
+
+    var thBar;
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+      if($('.wrapper>section').length)
+          thBar=$timeout(function() {
+            cfpLoadingBar.start();
+          }, 0);
+    });
+    $rootScope.$on('$stateChangeSuccess',function(event, toState, toParams, fromState, fromParams) {
+      event.targetScope.$watch("$viewContentLoaded", function () {
+        $timeout.cancel(thBar);
+        cfpLoadingBar.complete();
+      });
+    });
+
+    $rootScope.$on('$stateNotFound',
+        function(event, unfoundState, fromState, fromParams) {
+          console.log(unfoundState.to);
+          console.log(unfoundState.toParams);
+          console.log(unfoundState.options);
+        });
+
+    $rootScope.$on('$stateChangeError',
+      function(event, toState, toParams, fromState, fromParams, error) {
+        $window.scrollTo(0,0);
+        $rootScope.currTitle=$state.current.title;
+      });
+
+    $rootScope.currTitle=$state.current.title;
+
+    $rootScope.pageTitle=function() {
+      var title=$rootScope.app.name + ' - ' + ($rootScope.currTitle || $rootScope.app.description);
+      document.title=title;
+      return title;
+    };
+
+    $rootScope.$watch('app.layout.isCollapsed', function(newValue, oldValue) {
+      if(newValue===false)
+        $rootScope.$broadcast('closeSidebarMenu');
+    });
+
+    if(angular.isDefined($localStorage.layout))
+      $scope.app.layout=$localStorage.layout;
+    else
+      $localStorage.layout=$scope.app.layout;
+
+    $rootScope.$watch('app.layout', function() {
+      $localStorage.layout=$scope.app.layout;
+    }, true);
+
+    $scope.toggleUserBlock=function() {
+      $scope.$broadcast('toggleUserBlock');
+    };
+
+    $rootScope.cancel=function($event) {
+      $event.stopPropagation();
+    };
+
+  }]);
+
 angular.element(document).ready(function(){
   window.ApiUrl='http://localhost:60606';
 });

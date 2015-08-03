@@ -1,5 +1,6 @@
 ﻿using DataAccess.Configuration;
 using DataAccess.Models;
+using DataAccess.SampleData;
 using Master.API.Configuration;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,11 @@ namespace DataAccess.Context
       {
       }
 
+      static SalonDbContext()
+      {
+         Database.SetInitializer(new SalonSchedulerDatabaseInitializer());
+      }
+
       public static SalonDbContext Create()
       {
          return new SalonDbContext();
@@ -32,6 +38,7 @@ namespace DataAccess.Context
          modelBuilder.Configurations.Add(new ServiceConfiguration());
          modelBuilder.Configurations.Add(new ServiceTypeConfiguration());
          modelBuilder.Configurations.Add(new TimeSlotConfiguration());
+         modelBuilder.Configurations.Add(new SalonScheduleConfiguration());
       }
 
       public DbSet<Appointment> Appointments { get; set; }
@@ -42,5 +49,6 @@ namespace DataAccess.Context
       public DbSet<Service> Services { get; set; }
       public DbSet<ServiceType> ServiceTypes { get; set; }
       public DbSet<TimeSlot> TimeSlots { get; set; }
+      public DbSet<SalonSchedule> SalonSchedules { get; set; }
    }
 }

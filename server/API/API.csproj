@@ -212,6 +212,18 @@
     <Compile Include="Migrations\201507240032007_AddServiceTypeId.Designer.cs">
       <DependentUpon>201507240032007_AddServiceTypeId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508020259564_AddEmployeeInfoAddSalonScheduleTable.cs" />
+    <Compile Include="Migrations\201508020259564_AddEmployeeInfoAddSalonScheduleTable.Designer.cs">
+      <DependentUpon>201508020259564_AddEmployeeInfoAddSalonScheduleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508020303357_AddEmployeeInfoAddSalonScheduleTable1.cs" />
+    <Compile Include="Migrations\201508020303357_AddEmployeeInfoAddSalonScheduleTable1.Designer.cs">
+      <DependentUpon>201508020303357_AddEmployeeInfoAddSalonScheduleTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508020326437_AddEmployeeGender.cs" />
+    <Compile Include="Migrations\201508020326437_AddEmployeeGender.Designer.cs">
+      <DependentUpon>201508020326437_AddEmployeeGender.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -255,6 +267,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507240032007_AddServiceTypeId.resx">
       <DependentUpon>201507240032007_AddServiceTypeId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508020259564_AddEmployeeInfoAddSalonScheduleTable.resx">
+      <DependentUpon>201508020259564_AddEmployeeInfoAddSalonScheduleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508020303357_AddEmployeeInfoAddSalonScheduleTable1.resx">
+      <DependentUpon>201508020303357_AddEmployeeInfoAddSalonScheduleTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508020326437_AddEmployeeGender.resx">
+      <DependentUpon>201508020326437_AddEmployeeGender.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

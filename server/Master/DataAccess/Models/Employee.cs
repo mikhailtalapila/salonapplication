@@ -11,6 +11,12 @@ namespace DataAccess.Models
       public int EmployeeId { get; set; }
       public string FirstName { get; set; }
       public string LastName { get; set; }
+      public string LastInitial { get; set; }
+      public string PhoneNumber { get; set; }
+      public string AlternatePhoneNumber { get; set; }
+      public string Address { get; set; }
+      public string Title { get; set; }
+      public string Gender { get; set; }
       public string ImageSource { get; set; }
       public string Remarks { get; set; }
 

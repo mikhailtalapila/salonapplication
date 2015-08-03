@@ -71,3 +71,6 @@ C:\Users\Kyle\Documents\SalonApplication\server\API\bin\Microsoft.Owin.Cors.xml
 C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Debug\API.Migrations.Init.resources
 C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Debug\API.csproj.GenerateResource.Cache
 C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Debug\API.Migrations.AddServiceTypeId.resources
+C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Debug\API.Migrations.AddEmployeeInfoAddSalonScheduleTable.resources
+C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Debug\API.Migrations.AddEmployeeInfoAddSalonScheduleTable1.resources
+C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Debug\API.Migrations.AddEmployeeGender.resources

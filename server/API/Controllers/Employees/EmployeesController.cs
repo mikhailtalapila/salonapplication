@@ -81,6 +81,11 @@ namespace API.Controllers.Employees
              EmployeeId = employee.EmployeeId,
              FirstName = employee.FirstName,
              LastName = employee.LastName,
+             PhoneNumber=employee.PhoneNumber,
+             AlternatePhoneNumber=employee.AlternatePhoneNumber,
+             Address=employee.Address,
+             Title=employee.Title,
+             Gender=employee.Gender,
              ImageSource = employee.ImageSource,
              Remarks = employee.Remarks,
              Qualifications = from q in employee.EmployeeQualifications
@@ -88,7 +93,9 @@ namespace API.Controllers.Employees
                               select new QualificationModel
                               {
                                  QualificationId = q.QualificationId,
-                                 ServiceName = q.Service.ServiceName
+                                 ServiceName = q.Service.ServiceName,
+                                 ImageSource=q.Service.ImageSource,
+                                 Price=q.Service.Price
                               },
              Appointments = from a in employee.EmployeeAppointments
                             orderby a.Start

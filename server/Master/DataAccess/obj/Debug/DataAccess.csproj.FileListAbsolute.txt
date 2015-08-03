@@ -7,3 +7,4 @@ C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\bin\Debug\Enti
 C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\obj\Debug\DataAccess.dll
 C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\obj\Debug\DataAccess.pdb
+C:\Users\Kyle\Documents\SalonApplication\server\Master\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache

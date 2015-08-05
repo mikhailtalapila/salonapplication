@@ -1,31 +1,62 @@
-<div>
-	<div class="wrapper">
-		<div class="col-md-12">
 
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Phone number</th>
-					<th>Remarks</th>					
-					<th></th>
-				</tr>
-			</thead>
-			<tbody ng-repeat="customer in customers">
-				<tr>
-					<td>{{customer.firstName}} {{customer.lastName}}</td>
-					<td>{{customer.phoneNumber | tel}}</td>
-					<td>{{customer.remarks}}</td>
-					<td>
-						<a ng-click="viewDetails(customer.customerId)" class="btn btn-success" >Details</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<button class="btn btn-primary" ng-click="showCreateNewCustomerDialog()">Create new customer</button>
-		</div>	
-	</div>
+<div class="panel panel-default">
+   <div class="panel-footer">
+      <div class="row">
+         <div class="col-lg-4">
+            <div class="input-group">
+               <input type="text" placeholder="Search" class="input-sm form-control" />
+               <span class="input-group-btn">
+                  <button type="button" class="btn btn-sm btn-default">Search</button>
+               </span>
+            </div>
+         </div>
+         <div class="col-lg-8"></div>
+         
+      </div>
+   </div>
+   <div class="panel-heading">Customers</div>
+   <!-- START table-responsive-->
+   <div class="table-responsive">
+      <table id="table-ext-1" class="table table-bordered table-hover">
+         <thead>
+            <tr>
+               <th>ID</th>
+               <th>Picture</th>
+               <th>First Name</th>
+               <th>Last Name</th>
+               <th>Phone Number</th>
+               <th>Alt Phone Number</th>
+               <th>Last Appointment</th>
+               <th>Remarks</th>
+               
+            </tr>
+         </thead>
+         <tbody ng-repeat="customer in customers">
+            
+            <tr ng-click="viewDetails(customer.customerId)">
+               <td>{{customer.customerId}}</td>
+               <td>
+                  <div class="media">
+                  
+                     <img src="app/img/user/01.jpg" alt="Image" class="img-responsive img-circle" />
+                  </div>
+               </td>
+               <td>{{customer.firstName}}</td>
+               <td>{{customer.lastName}}</td>
+               <td>{{customer.phoneNumber}}</td>
+               <td>{{customer.alternatePhoneNumber}}</td>
+               <td>{{customer.remarks}}</td>
+               <td>{{customer.remarks}}</td>
+               
+            </tr>
+            
+         </tbody>
+      </table>
+   </div>
+   <!-- END table-responsive-->
+   
 </div>
+<!-- END panel-->
 
 <script type="text/ng-template" id="createNewCustomer.html">
 	<div class="modal-header">

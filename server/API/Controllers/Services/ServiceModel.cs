@@ -15,6 +15,9 @@ namespace API.Controllers.Services
       public string ServiceName { get; set; }
       public decimal Price { get; set; }
       public IEnumerable<QualificationModel> Qualifications { get; set; }
+      public string ImageSource { get; set; }
+      public string Description { get; set; }
+      public int ServiceTypeId { get; set; }
       public string ServiceTypeName { get; set; }
    }
 }

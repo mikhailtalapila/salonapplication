@@ -1,6 +1,7 @@
 ﻿using API.Controllers.Appointments;
 using API.Controllers.EmployeeSchedules;
 using API.Controllers.Qualifications;
+using API.Controllers.ServiceTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace API.Controllers.Employees
       public string Gender { get; set; }
       public string ImageSource { get; set; }
       public string Remarks { get; set; }
+      public IEnumerable<ServiceTypeModel> ServiceTypes { get; set; }
       public IEnumerable<QualificationModel> Qualifications { get; set; }
       public IEnumerable<AppointmentOutModel> Appointments { get; set; }
       public IEnumerable<EmployeeScheduleModel> EmployeeSchedules { get; set; }

@@ -3711,7 +3711,7 @@ App.controller('NGGridController', ['$scope', '$http', '$timeout', function($sco
     $scope.gridOptions = {
         data:             'myData',
         enablePaging:     true,
-        showFooter:       true,
+        Footer:       true,
         rowHeight:        36,
         headerRowHeight:  38,
         totalServerItems: 'totalServerItems',
@@ -4221,8 +4221,8 @@ App.controller('ChartRickshawController', ['$scope', function($scope) {
  * Handle sidebar collapsible elements
  =========================================================*/
 
-App.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', '$timeout', 'Utils',
-  function($rootScope, $scope, $state, $http, $timeout, Utils){
+App.controller('SidebarController', ['$rootScope', '$scope', '$state', '$http', '$timeout', 'Utils', '$sce',
+  function($rootScope, $scope, $state, $http, $timeout, Utils, $sce){
 
     var collapseList = [];
 

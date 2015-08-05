@@ -1,3 +1,4 @@
+<!--
 <div class="ng-scope">
 	<div class="wrapper">
 		<div class="col-md-12">
@@ -25,4 +26,38 @@
 		</table>
 		</div>	
 	</div>
+</div>   --> 
+ 
+
+<div class=row >
+  <div class="col-xs-3" ng-repeat="service in services" >
+    <div class="thumbnails thumbnail-style " style="height:200px;">
+    	<div class="thumbnail-kenburn">    		
+    		<a class="btn-more btn-oval hover-effect pull-left" ng-click='viewDetails(service.serviceId)'>get details</a>
+    	</div>
+    	<div class="thumbnail-img">
+    		<div>
+    			<div class="col-md-4 thumbnail-kenburn">
+    				<img class="img-responsive img-thumbnail" ng-src="app/img/services/{{service.imageSource}}"/> 
+    			</div>
+    			<div class="col-md-8">
+    				<h3><a class="hover-effect" href="#">{{service.serviceName}}</a></h3>
+    			</div>
+    		</div>
+    	</div>
+    	
+    	<div class="caption">    		
+    		<p>{{service.price | currency}}</p>
+    	</div>
+    	<div>
+    		<div ng-repeat="qualification in service.qualifications">
+    			<a ng-click='viewEmployeeDetails(qualification.employeeId)' class="pull-left">
+                        <img ng-src="app/img/employees/{{qualification.imageSource}}" tooltip="{{qualification.employeeFirstName}} {{qualification.employeeLastInitial}}" alt="" style="height:30px;margin:2px;" class="noeffect img-circle" />
+                </a>
+    		</div>
+    	</div>
+    </div>    
+  </div>
 </div>
+
+					

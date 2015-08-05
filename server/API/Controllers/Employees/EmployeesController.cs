@@ -2,6 +2,8 @@
 using API.Controllers.Employees;
 using API.Controllers.EmployeeSchedules;
 using API.Controllers.Qualifications;
+using API.Controllers.Services;
+using API.Controllers.ServiceTypes;
 using DataAccess.Context;
 using DataAccess.Models;
 using System;
@@ -24,7 +26,11 @@ namespace API.Controllers.Employees
        public HttpResponseMessage Get()
        {
           var employees = from e in _db.Employees
-                          orderby e.EmployeeId
+                          //join q in _db.Qualifications on e.EmployeeId equals q.EmployeeId
+                          //join s in _db.Services on q.ServiceId equals s.ServiceId
+                          //join st in _db.ServiceTypes on s.ServiceTypeId equals st.ServiceTypeId
+                          //group st by new { st.}
+                          //orderby e.EmployeeId
                           select new EmployeeModel
                           {
                              EmployeeId = e.EmployeeId,
@@ -32,39 +38,56 @@ namespace API.Controllers.Employees
                              LastName = e.LastName,
                              ImageSource = e.ImageSource,
                              Remarks = e.Remarks,
+                             //ServiceTypes = from sts in st.Services
+                             //               orderby sts.ServiceName
+                             //               select new ServiceTypeModel 
+                             //               {
+                             //                   ServiceTypeId=sts.ServiceTypeId,
+                             //                   ServiceTypeName=sts.ServiceType.ServiceTypeName
+                             //               }
+
+                             //ServiceTypes = from sts in st.Services
+                             //               orderby sts.ServiceType
+                             //               select new ServiceTypeModel 
+                             //               {
+                             //                ServiceTypeId=sts.ServiceTypeId,
+
+                             //               }
+
                              Qualifications = from q in e.EmployeeQualifications
                                               orderby q.ServiceId
                                               select new QualificationModel
                                               {
                                                  QualificationId = q.QualificationId,
-                                                 ServiceName = q.Service.ServiceName
-                                              },
-                             Appointments = from a in e.EmployeeAppointments
-                                            orderby a.Start
-                                            select new AppointmentOutModel
-                                            {
-                                               AppointmentId = a.AppointmentId,
-                                               CustomerFirstName = a.Customer.FirstName,
-                                               CustomerLastName = a.Customer.LastName,
-                                               ServiceName = a.Service.ServiceName,
-                                               ServicePrice = a.Service.Price,
-                                               AppointmentStartTime = a.Start,
-                                               AppointmentDurationInMins = a.Duration,
-                                               CustomerPaid = a.Paid,
-                                               AppointmentConfirmation = a.Confirmation,
-                                               IsEmployeeRequested = a.EmployeeRequested,
-                                               AppointmentRemarks = a.Remarks
-                                            },
-                             EmployeeSchedules = from es in e.EmployeeSchedules
-                                                 orderby es.EmployeeScheduleId
-                                                 select new EmployeeScheduleModel
-                                                 {
-                                                    EmployeeScheduleId = es.EmployeeScheduleId,
-                                                    EmployeeFirstName = es.Employee.FirstName,
-                                                    EmployeeLastName = es.Employee.LastName,
-                                                    TimeSlotStart = es.TimeSlot.Start,
-                                                    TimeSlotDuration = es.TimeSlot.Duration
-                                                 }
+                                                 ServiceName = q.Service.ServiceName,
+                                                 ServiceTypeName = q.Service.ServiceType.ServiceTypeName
+                                              }
+                             //Appointments = from a in e.EmployeeAppointments
+                             //               orderby a.Start
+                             //               select new AppointmentOutModel
+                             //               {
+                             //                  AppointmentId = a.AppointmentId,
+                             //                  CustomerFirstName = a.Customer.FirstName,
+                             //                  CustomerLastName = a.Customer.LastName,
+                             //                  ServiceName = a.Service.ServiceName,
+                             //                  ServicePrice = a.Service.Price,
+                             //                  AppointmentStartTime = a.Start,
+                             //                  AppointmentDurationInMins = a.Duration,
+                             //                  CustomerPaid = a.Paid,
+                             //                  AppointmentConfirmation = a.Confirmation,
+                             //                  IsEmployeeRequested = a.EmployeeRequested,
+                             //                  AppointmentRemarks = a.Remarks
+                             //               },
+                             //EmployeeSchedules = from es in e.EmployeeSchedules
+                             //                    orderby es.EmployeeScheduleId
+                             //                    select new EmployeeScheduleModel
+                             //                    {
+                             //                       EmployeeScheduleId = es.EmployeeScheduleId,
+                             //                       EmployeeFirstName = es.Employee.FirstName,
+                             //                       EmployeeLastName = es.Employee.LastName,
+                             //                       TimeSlotStart = es.TimeSlot.Start,
+                             //                       TimeSlotDuration = es.TimeSlot.Duration
+                             //                    }
                           };
           if (employees == null) throw new HttpResponseException(HttpStatusCode.NotFound);
           return Request.CreateResponse<IEnumerable<EmployeeModel>>(HttpStatusCode.OK, employees);

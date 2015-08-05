@@ -1,10 +1,10 @@
 'use strict';
-App.controller('ServicesListCtrl', ['$scope','$http','$state','serviceDataFactory',function($scope,$http,$state,serviceDataFactory){
+App.controller('ServicesListCtrl', ['$scope','$http','$state','serviceDataFactory','RouteHelpers',function ($scope,$http,$state,serviceDataFactory,RouteHelpers){
   	
     $scope.$on('$stateChangeSuccess',function(){
       if($state.is('app.services.list'))
         getServices();
-    });
+    });     
 
     function getServices() {
       serviceDataFactory.getServices()
@@ -36,8 +36,11 @@ App.controller('ServicesListCtrl', ['$scope','$http','$state','serviceDataFactor
     };
 
     $scope.viewDetails=function(id){
-      $state.go('app.services.details',{id:id})
+      $state.go('app.services.details',{id:id});
     };
+    $scope.viewEmployeeDetails=function(id) {
+      $state.go('app.employees.details',{id:id});
+    }
 
     $scope.insertService=function() {
       var serv={

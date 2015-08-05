@@ -9,16 +9,11 @@
    </div>
    <div class="text-center bg-gray-dark p-lg mb-xl">
       <div class="row row-table">
-         <div class="col-xs-4 br">
+         <div class="col-xs-6 br">
             <a ui-sref='app.employees.list'><em class="pull-left fa fa-reply fa-lg fa-fw text-muted mt"></em></a>            
          </div>
-         <div class="col-xs-4 br">
-            <h3 class="m0">2000</h3>
-            <p class="m0">Likes</p>
-         </div>
-         <div class="col-xs-4">
-            <h3 class="m0">100</h3>
-            <p class="m0">Following</p>
+         <div class="col-xs-6">
+            <button type="button" class="btn btn-primary btn-xs">Email tomorrow's schedule</button>
          </div>
       </div>
    </div>
@@ -306,14 +301,14 @@
                      </span>
                      <span class="pull-left">
                         <!-- Contact avatar-->
-                        <img src="app/img/services/{{qualification.imageSource}}" alt="Image" class="media-object img-circle thumb32" />
+                        <img ng-src="app/img/services/{{qualification.imageSource}}" alt="Image" class="media-object img-circle thumb32" />
                      </span>
                      <!-- Contact info-->
                      <span class="media-body">
                         <span class="media-heading">
                            <strong>{{qualification.serviceName}}</strong>
                            <br/>
-                           <small class="text-muted">Designeer</small>
+                           <small class="text-muted">{{qualification.price | currency}}</small>
                         </span>
                      </span>
                   </a>

@@ -22,7 +22,7 @@ namespace API.Controllers.Services
        public HttpResponseMessage Get()
        {
           var services = from s in _db.Services
-                         orderby s.ServiceName
+                         orderby s.ServiceType.ServiceTypeName,s.Price
                          select new ServiceModel
                          {
                             ServiceId = s.ServiceId,
@@ -33,10 +33,14 @@ namespace API.Controllers.Services
                                              select new QualificationModel 
                                              {
                                                 QualificationId=q.QualificationId,
+                                                EmployeeId=q.EmployeeId,
                                                 EmployeeFirstName=q.Employee.FirstName,
-                                                EmployeeLastName=q.Employee.LastName
+                                                EmployeeLastName=q.Employee.LastName,
+                                                EmployeeLastInitial=q.Employee.LastInitial,
+                                                ImageSource=q.Employee.ImageSource
                                              },
-                           ServiceTypeName= s.ServiceType.ServiceTypeName                           
+                           ServiceTypeName= s.ServiceType.ServiceTypeName,
+                           ImageSource=s.ImageSource
                          };
           if (services == null) throw new HttpResponseException(HttpStatusCode.NotFound);
           return Request.CreateResponse<IEnumerable<ServiceModel>>(HttpStatusCode.OK, services);

@@ -121,7 +121,8 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
         url:'/customersdetails/:id',
         title:'Customer details',
         controller:'CustomersDetailsCtrl',
-        templateUrl:helper.basepath('customers/customersDetails.html')
+        templateUrl:helper.basepath('customers/customersDetails.html'),
+        resolve: helper.resolveFor('xeditable')
     })
     .state('app.employees',{
         url:"/employees",

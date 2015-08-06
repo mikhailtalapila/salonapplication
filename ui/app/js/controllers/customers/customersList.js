@@ -10,6 +10,15 @@ App.controller('CustomersListCtrl', ['$http','$scope','$state','$modal','modalSe
       customerDataFactory.getCustomers()
         .success(function(custs){
           $scope.customers=custs;
+          if($scope.customers!=null && $scope.customers!==undefined) {
+            angular.forEach($scope.customers,function(customer) {
+              if(customer.gender==='m'){
+                customer.imageSource='app/img/customers/unknownmale.jpg';
+              } else {
+                customer.imageSource='app/img/customers/unknownfemale.jpg';
+              }
+            });
+          }
         })
         .error(function(error){
           $scope.status='Unable to load customer data: '+error.message;

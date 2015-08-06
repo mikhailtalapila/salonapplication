@@ -19,7 +19,8 @@
 
 <body data-ng-class="{ 'layout-fixed' : app.layout.isFixed, 'aside-collapsed' : app.layout.isCollapsed, 'layout-boxed' : app.layout.isBoxed, 'layout-fs': app.useFullLayout, 'hidden-footer': app.hiddenFooter, 'layout-h': app.layout.horizontal, 'aside-float': app.layout.isFloat, 'offsidebar-open': app.offsidebarOpen, 'aside-toggled': app.asideToggled}">
    <div data-ui-view="" data-autoscroll="false" class="wrapper"></div>
-        <script src="app/js/base.js"></script>
+        <script src="vendor/angular-xeditable/dist/js/xeditable.js"></script>
+        <script src="app/js/base.js"></script>    
         <script src="app/js/app.js"></script>
         <script src="app/js/controllers/appointments/appointments.js"></script>
         <script src="app/js/controllers/appointments/appointmentsList.js"></script>
@@ -49,7 +50,6 @@
         <script src="app/js/services/modalService.js"></script>
         <script src="app/js/services/apiHttpInterceptor.js"></script>
         <script src="app/js/filters/phoneNumber.js"></script>
-        <script src="app/js/filters/unique.js"></script>
 </body>
 
 </html>

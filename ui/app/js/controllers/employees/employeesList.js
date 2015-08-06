@@ -10,11 +10,14 @@ App.controller('EmployeesListCtrl', ['$http','$scope','$state','employeeDataFact
       employeeDataFactory.getEmployees()
         .success(function(emps){
           $scope.employees=emps;
+          //filterServiceTypes();
         })
         .error(function(error){
           $scope.status='Unable to load employees data: '+error.message;
         });
     };
+
+
 
     $scope.updateEmployee=function(id) {
       var emp;

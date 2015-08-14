@@ -2,6 +2,8 @@
 <h3>Customer details
    <small>Click on the link to edit details</small>
 </h3>
+
+<a ui-sref='app.customers.list'>Back</a>
 <div class="row">
    <div class="col-md-6">
       <div class="panel panel-default">
@@ -11,53 +13,58 @@
                <div class="form-group m0">
                   <label class="col-sm-4 control-label">First Name:</label>
                   <div class="col-sm-8">
-                     <p class="form-control-static"><a href="#" editable-range="customer.firstName" e-step="5">{{ customer.firstName || &apos;empty&apos; }}</a>
+                     <p class="form-control-static"><a href="#" e-required editable-text="customer.firstName" e-step="5" onaftersave="updateCustomer()">{{ customer.firstName || &apos;empty&apos; }}</a>
                      </p>
                   </div>
                </div>
                <div class="form-group m0">
                   <label class="col-sm-4 control-label">Last Name:</label>
                   <div class="col-sm-8">
-                     <p class="form-control-static"><a href="#" editable-url="customer.lastName">{{ customer.lastName || &apos;empty&apos; }}</a>
+                     <p class="form-control-static"><a href="#" e-required editable-text="customer.lastName" onaftersave="updateCustomer()">{{ customer.lastName || &apos;empty&apos; }}</a>
                      </p>
                   </div>
                </div>
                <div class="form-group m0">
                   <label class="col-sm-4 control-label">Email:</label>
                   <div class="col-sm-8">
-                     <p class="form-control-static"><a href="#" editable-email="customer.email">{{ customer.email || &apos;empty&apos; }}</a>
+                     <p class="form-control-static"><a href="#" editable-email="customer.email" onaftersave="updateCustomer()">{{ customer.email || &apos;empty&apos; }}</a>
                      </p>
                   </div>
                </div>
                <div class="form-group m0">
                   <label class="col-sm-4 control-label">Phone:</label>
                   <div class="col-sm-8">
-                     <p class="form-control-static"><a href="#" editable-tel="customer.phoneNumber" e-pattern="\d{3}-\d{2}-\d{2}" e-title="xxx-xx-xx">{{ customer.phoneNumber || &apos;empty&apos; }}</a>
+                     <p class="form-control-static"><a href="#" editable-tel="customer.phoneNumber" e-required onaftersave="updateCustomer()">{{ customer.phoneNumber || &apos;empty&apos; }}</a>
                      </p>
                   </div>
                </div>
                <div class="form-group m0">
                   <label class="col-sm-4 control-label">Alternate phone:</label>
                   <div class="col-sm-8">
-                     <p class="form-control-static"><a href="#" editable-tel="customer.alternatePhoneNumber" e-pattern="\d{3}-\d{2}-\d{2}" e-title="xxx-xx-xx">{{ customer.alternatePhoneNumber || &apos;empty&apos; }}</a>
+                     <p class="form-control-static"><a href="#" editable-tel="customer.alternatePhoneNumber" onaftersave="updateCustomer()">{{ customer.alternatePhoneNumber || &apos;empty&apos; }}</a>
                      </p>
                   </div>
                </div>
-               
+               <div class="form-group m0">
+                  <label class="col-sm-4 control-label">Gender:</label>
+                  <div class="col-sm-8">
+                     <p class="form-control-static"><a href="#" editable-select="customer.gender"  e-ng-options="s.value as s.text for s in genders" onaftersave="updateCustomer">
+                         {{customer.gender}}
+                     </a>
+                     </p>
+                  </div>
+               </div>
+
+              
+
+
                <div class="form-group m0">
                   <label class="col-sm-4 control-label">Remarks</label>
                   <div class="col-sm-8">
-                     <p class="form-control-static"><a href="#" editable-textarea="customer.remarks" e-rows="3" e-cols="30">{{ customer.remarks|| 'no description' }}    </a>
+                     <p class="form-control-static"><a href="#" editable-textarea="customer.remarks" e-rows="10" e-cols="30" onaftersave="updateCustomer()">{{ customer.remarks|| 'no description' }}    </a>
                      </p>
                   </div>
                </div>
-               <!--<div class="form-group m0">
-                  <label class="col-sm-4 control-label">Gender</label>
-                  <div class="col-sm-8">
-                     <p class="form-control-static"><a href="#" editable-select="customer.gender" e-ng-options="g.value as g.text for g in genders">{{ showGender() }}</a>
-                     </p>
-                  </div>
-               </div>   -->
             </div>
          </div>
       </div>
@@ -65,34 +72,32 @@
    <div class="col-md-6">
       <div class="panel panel-default">
          <div class="panel-heading">Appointments</div>
-         <div ng-repeat="appointment in customer.appointments" class="panel-body">
-            <div class="form-horizontal">
-               <div class="form-group m0">
-                  <label class="col-sm-4 control-label" style="bold">Appointment date:</label>
-                  <div class="col-sm-8">
-                     <p class="form-control-static"><a href="#" editable-text="appointment.appointmentStartTime">{{ appointment.appointmentStartTime || &apos;empty&apos; | date:'yyyy-MMM-dd  HH:mm:ss a'}}</a>
-                     </p>
-                  </div>
-               </div>
-               <div class="form-group m0">
-                  <label class="col-sm-4 control-label">Remarks</label>
-                  <div class="col-sm-8">
-                     <p class="form-control-static"><a href="#" editable-textarea="appointment.serviceName" e-rows="3" e-cols="30">{{ appointment.serviceName|| 'no description' }}    </a>
-                     </p>
-                  </div>
-               </div>
-              
-               <div class="form-group m0">
-                  <label class="col-sm-4 control-label">Remarks</label>
-                  <div class="col-sm-8">
-                     <p class="form-control-static"><a href="#" editable-textarea="appointment.employee" e-rows="3" e-cols="30">{{ appointment.employeeFirstName }} {{ appointment.employeeLastName }}     </a>
-                     </p>
-                  </div>
-               </div>
-               
-               
-            </div>
-         </div>
+   <!-- START table-responsive-->
+   <div class="table-responsive">
+      <table id="table-ext-1" class="table table-bordered table-hover">
+         <thead>
+            <tr>
+               <th>Employee Requested</th>
+               <th>Appointment Time</th>
+               <th>Service Name</th>
+               <th>Employee</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr ng-repeat="appointment in customer.appointments">
+               <td ng-if='appointment.isEmployeeRequested==true'>Yes</td>
+               <td ng-if='appointment.isEmployeeRequested==false'>No</td>
+               <td>{{appointment.appointmentStartTime | date:'MMM-dd-yyyy @ h:mma EEE'}}</td>
+               <td>{{appointment.serviceName}}</td>
+               <td>{{appointment.employeeFirstName}} {{appointment.employeeLastName}}</td>
+            </tr>
+            
+         </tbody>
+      </table>
+   </div>
+   <!-- END table-responsive-->
+   
+</div>
       </div>
    </div>
 </div>

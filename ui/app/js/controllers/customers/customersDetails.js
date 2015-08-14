@@ -5,44 +5,51 @@ App.controller('CustomersDetailsCtrl', ['$scope',  '$http','$state','$stateParam
   	getCustomer();
     editableOptions.theme = 'bs3';
 
-    editableThemes.bs3.inputClass = 'input-sm';
-    editableThemes.bs3.buttonsClass = 'btn-sm';
+    editableThemes.bs3.inputClass = 'input-lg';
+    editableThemes.bs3.buttonsClass = 'btn-lg';
     editableThemes.bs3.submitTpl = '<button type="submit" class="btn btn-success"><span class="fa fa-check"></span></button>';
     editableThemes.bs3.cancelTpl = '<button type="button" class="btn btn-default" ng-click="$form.$cancel()">'+
                                      '<span class="fa fa-times text-muted"></span>'+
                                    '</button>';
 
     $scope.genders = [
-      {value: 1, text: 'female'},
-      {value: 2, text: 'male'}
+      {value: 'f', text: 'female'},
+      {value: 'm', text: 'male'}
     ];
 
     $scope.customerId=$stateParams.id;
   	function getCustomer() {
   		customerDataFactory.getCustomer($stateParams.id)
   			.success(function(cust) {
-  				$scope.customer=cust;
+  				$scope.customer=cust;  				
   			})
   			.error(function(error) {
   				$scope.status='Unable to get customer: '+error.message;
   			});
   	}
-  	
+  	$scope.showGender = function() {
+      			var selected = $filter('filter')($scope.genders, {value: $scope.customer.gender});
+      			console.log('here');
+      			return ($scope.customer.gender && selected.length) ? selected[0].text : 'Not set';      			
+    			};
 
-    $scope.showGender = function() {
+  	$scope.$watch('customer.gender', function(newVal, oldVal) {
+    if (newVal !== oldVal) {
       var selected = $filter('filter')($scope.genders, {value: $scope.customer.gender});
-      return ($scope.customer.gender && selected.length) ? selected[0].text : 'Not set';
-    };
+      $scope.customer.gender = selected.length ? selected[0].value : null;
+      $scope.updateCustomer();
+      //console.log($scope.customer.gender);
+    }
+  	});
+
+
+  	$scope.updateCustomer=function() {
+  		return customerDataFactory.updateCustomer($scope.customer);
+  	}
+  	
 
     
 
-
-    $scope.$watch('user3.id', function(newVal, oldVal) {
-      if (newVal !== oldVal) {
-        var selected = $filter('filter')($scope.groups, {id: $scope.user3.id});
-        $scope.user3.text = selected.length ? selected[0].text : null;
-      }
-    });
-
+ 
 
 }]);

@@ -1,0 +1,71 @@
+
+
+<div class="col-sm-12">
+      <!-- START panel-->
+      <div class="panel panel-default">
+         <div class="panel-heading">New Customer</div>
+         <div class="panel-body">
+         <a ui-sref="app.customers.list">Back</a>
+            <form class="form-horizontal">
+               <div class="form-group">
+                  <label class="col-lg-2 control-label">First Name</label>
+                  <div class="col-lg-4">
+                     <input type="text" ng-model="customer.firstName" placeholder="First Name" class="form-control" />
+                  </div>
+                  <label class="col-lg-2 control-label">Last Name</label>
+                  <div class="col-lg-4">
+                     <input type="text" ng-model="customer.lastName" placeholder="Last Name" class="form-control" />
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label class="col-lg-2 control-label">Phone Number</label>
+                  <div class="col-lg-4">
+                     <input type="number" ng-model="customer.phoneNumber" placeholder="Phone Number" class="form-control" />
+                  </div>
+                  <label class="col-lg-2 control-label">Alternate Phone Number</label>
+                  <div class="col-lg-4">
+                     <input type="number" ng-model="customer.alternatePhoneNumber" placeholder="Alternate Phone Number" class="form-control" />
+                  </div>
+               </div>
+               <div class="form-group">
+                  <label class="col-lg-2 control-label">Email</label>
+                  <div class="col-lg-4">
+                     <input type="email" ng-model="customer.email" placeholder="Email" class="form-control" />
+                  </div>
+                  <label class="col-lg-2 control-label">Gender</label>
+                  <div class="col-lg-4">
+                     <ui-select ng-model="gender.selected" theme="bootstrap" ng-disabled="disabled">
+            			     <ui-select-match placeholder="Select gender...">{{$select.selected.code}}</ui-select-match>
+           			         <ui-select-choices repeat="gender in genders">
+           			            <div ng-bind-html="gender.gender"></div>           			       
+            			     </ui-select-choices>
+           		    </ui-select>
+                  </div>
+               </div>               
+               <div class="form-group">
+               	    <label class="col-sm-2 control-label">Remarks</label>
+               		<div class="col-sm-10">
+                 		 <textarea ng-model="customer.remarks" class="form-control" placeholder="Remarks"></textarea>
+               		</div>
+               </div>
+               <div class="form-group">
+                  <label class="col-sm-2 control-label">Customer Picture</label>               
+               	  <div class="col-sm-8">
+                      <input filestyle="" type="file" data-button-text="Customer Picture" data-class-button="btn btn-default" data-classinput="form-control inline" nv-file-select="" uploader="uploader" class="form-control" />
+                  </div>
+                  <div class="col-sm-2">
+                  <button type="button" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length" class="btn btn-info btn-s">
+                     <span class="icon-cloud-upload mr"></span>Upload picture</button>
+                  </div>
+               </div>               
+              
+               <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                     <button type="submit" class="btn btn-sm btn-success" ng-click="addNewCustomer()">Add Customer</button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <!-- END panel-->
+   </div>

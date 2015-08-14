@@ -25,7 +25,9 @@ App.controller('CustomersListCtrl', ['$http','$scope','$state','$modal','modalSe
         });
     };
 
-  	
+  	$scope.addNewCustomer=function() {
+      $state.go('app.newcustomer');
+    };
 
     $scope.updateCustomer=function(id) {
       var cust;

@@ -1,13 +1,65 @@
-<h1>Service details</h1>
-<div>{{service.serviceName}}</div>
-<div>{{service.price | currency }}</div>
-<div>
-Employees who qualify
-<ul>
-	<li ng-repeat='qualification in service.qualifications'>
-		{{qualification.employeeFirstName}} {{qualification.employeeLastName}}
-	</li>
-</ul>
-</div>
 
+<a ui-sref='app.services.list'>Back</a>
+<div class="panel">
+   <div class="panel-body">
+      <h3 class="mt0">{{service.serviceName}}</h3>
+      <hr/>
+      <div class="row mb-lg">
+         <div class="col-lg-3 col-xs-6 br pv">
+            <div class="row">
+               <div class="col-md-2 text-center visible-md visible-lg">
+                  <em class="fa fa-star-o fa-4x text-muted"></em>
+               </div>
+               <div class="col-md-10">
+               	<img ng-src="app/img/services/{{service.imageSource}}"/>   
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-3 col-xs-6 br pv">
+            <div class="row">
+               <div class="col-md-2 text-center visible-md visible-lg">
+                  <em class="fa fa-money fa-4x text-muted"></em>
+               </div>
+               <div class="col-md-10">
+                  <h4>Service Price</h4>
+               		<h3>{{service.price | currency}}</h3>   
+               </div>
+            </div>
+         </div>
+         <div class="clearfix hidden-md hidden-lg">
+            <hr/>
+         </div>
+         <div class="col-lg-6 col-xs-12 pv">
+            <div class="clearfix">
+               <p class="pull-left">Description</p>
+            </div>
+            <div class="clearfix">
+               {{service.description}}
+            </div>
+         </div>
+      </div>
+      <div class="table-responsive table-bordered mb-lg">
+         <table class="table">
+            <thead>
+               <tr>
+                  <th></th>
+                  <th>Employee</th>
+               </tr>
+            </thead>
+            <tbody ng-repeat='qualification in service.qualifications'>
+               <tr>
+                  <td> <img ng-src="app/img/employees/{{qualification.imageSource}}" alt="Image" class="media-object img-circle thumb32" /></td>
+                  <td>{{qualification.employeeFirstName}} {{qualification.employeeLastName}}</td>
+               </tr>               
+            </tbody>
+         </table>
+      </div>
+      
+      <hr class="hidden-print" />
+      <div class="clearfix">
+         <button type="button" class="btn btn-info pull-left mr">Edit Qualification</button>
+         <button type="button" class="btn btn-success pull-right">Add New Qualification</button>
+      </div>
+   </div>
+</div>  
 <a ui-sref='app.services.list'>Back</a>

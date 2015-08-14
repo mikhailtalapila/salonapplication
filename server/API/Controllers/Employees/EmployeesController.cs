@@ -159,7 +159,13 @@ namespace API.Controllers.Employees
                 FirstName = value.FirstName,
                 LastName = value.LastName,
                 ImageSource = value.ImageSource,
-                Remarks = value.Remarks
+                Remarks = value.Remarks,
+                LastInitial=value.LastInitial,
+                PhoneNumber=value.PhoneNumber,
+                AlternatePhoneNumber=value.AlternatePhoneNumber,
+                Address=value.Address,
+                Title=value.Title,
+                Gender=value.Gender
              };
           var emp=_db.Employees.Add(employee);
           _db.SaveChanges();

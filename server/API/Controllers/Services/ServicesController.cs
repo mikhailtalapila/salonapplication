@@ -40,7 +40,8 @@ namespace API.Controllers.Services
                                                 ImageSource=q.Employee.ImageSource
                                              },
                            ServiceTypeName= s.ServiceType.ServiceTypeName,
-                           ImageSource=s.ImageSource
+                           ImageSource=s.ImageSource,
+                           Description=s.Description
                          };
           if (services == null) throw new HttpResponseException(HttpStatusCode.NotFound);
           return Request.CreateResponse<IEnumerable<ServiceModel>>(HttpStatusCode.OK, services);
@@ -62,9 +63,12 @@ namespace API.Controllers.Services
                               {
                                  QualificationId = q.QualificationId,
                                  EmployeeFirstName = q.Employee.FirstName,
-                                 EmployeeLastName = q.Employee.LastName
+                                 EmployeeLastName = q.Employee.LastName,
+                                 ImageSource=q.Employee.ImageSource
                               },
-            ServiceTypeName=service.ServiceType.ServiceTypeName
+            ServiceTypeName=service.ServiceType.ServiceTypeName,
+            Description=service.Description,
+            ImageSource=service.ImageSource
           };
           if (sevc == null) throw new HttpResponseException(HttpStatusCode.NotFound);
           return Request.CreateResponse<ServiceModel>(HttpStatusCode.OK, sevc);
@@ -79,7 +83,8 @@ namespace API.Controllers.Services
           {
              ServiceName = value.ServiceName,
              Price = value.Price,
-             ServiceType=servType
+             ServiceTypeId=value.ServiceTypeId,
+             Description=value.Description
           };
           var serv = _db.Services.Add(service);
           _db.SaveChanges();

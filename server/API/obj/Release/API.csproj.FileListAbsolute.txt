@@ -71,3 +71,6 @@ C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Release\API.Migrations.A
 C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Release\API.csproj.GenerateResource.Cache
 C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Release\API.dll
 C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Release\API.pdb
+C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Release\API.Migrations.AddEmployeeInfoAddSalonScheduleTable.resources
+C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Release\API.Migrations.AddEmployeeInfoAddSalonScheduleTable1.resources
+C:\Users\Kyle\Documents\SalonApplication\server\API\obj\Release\API.Migrations.AddEmployeeGender.resources

@@ -55,6 +55,10 @@ App.controller('EmployeesListCtrl', ['$http','$scope','$state','employeeDataFact
         });
     };
 
+    $scope.addNewEmployee=function() {
+      $state.go('app.newEmployee');
+    };
+
     $scope.deleteEmployee=function(id) {
       employeeDataFactory.deleteEmployee(id)
         .success(function() {

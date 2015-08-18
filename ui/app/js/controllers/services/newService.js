@@ -56,7 +56,7 @@ App.controller('NewServiceCtrl', ['$scope','$state','$http','$stateParams','serv
   	 $scope.service.serviceTypeId=$scope.serviceType.selected.serviceTypeId;
   	 serviceDataFactory.insertService($scope.service)
   	 	.success(function() {
-  	 		$scope.info();
+  	 		Notification.success('Service created');
   	 		clearAllFields();
   	 	})
   	 	.error(function(error) {

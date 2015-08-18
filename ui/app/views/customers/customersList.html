@@ -4,9 +4,8 @@
       <div class="row">
          <div class="col-lg-4">
             <div class="input-group">
-               <input type="text" placeholder="Search" class="input-sm form-control" />
+               <input type="text" placeholder="Search" ng-model='query' class="input-sm form-control" />
                <span class="input-group-btn">
-                  <button type="button" class="btn btn-sm btn-default">Search</button>
                   <a  ng-click='addNewCustomer()' class="btn  btn-oval btn-success">Add new customer</a>
                </span>
             </div>
@@ -23,19 +22,26 @@
             <tr>
                <th>ID</th>
                <th>Picture</th>
-               <th>First Name</th>
-               <th>Last Name</th>
+               <th ng-click="sort('firstName')">First Name
+               <span class="glyphicon sort-icon" ng-show="sortKey=='firstName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+               </th>
+               <th ng-click="sort('lastName')">Last Name
+               <span class="glyphicon sort-icon" ng-show="sortKey=='lastName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+               </th>
                <th>Phone Number</th>
                <th>Alt Phone Number</th>
-               <th>Last Appointment</th>
+               <th ng-click="sort('appointments[0].appointmentStartTime')">
+               <span class="glyphicon sort-icon" ng-show="sortKey=='appointments[0].appintmentStartTime'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+               Latest Appointment
+               </th>
                <th>Remarks</th>
                
             </tr>
          </thead>
-         <tbody ng-repeat="customer in customers">
+         <tbody dir-paginate="customer in customers | filter:query | orderBy:sortKey:reverse | itemsPerPage:10 ">
             
             <tr ng-click="viewDetails(customer.customerId)">
-               <td>{{customer.customerId}}</td>
+               <td></td>
                <td>
                   <div class="media">                  
                      <img ng-src="{{customer.imageSource}}" alt="Image" class="img-responsive img-circle" />
@@ -45,13 +51,14 @@
                <td>{{customer.lastName}}</td>
                <td>{{customer.phoneNumber}}</td>
                <td>{{customer.alternatePhoneNumber}}</td>
-               <td>{{customer.remarks}}</td>
+               <td>{{customer.appointments[0].appointmentStartTime | date:'yyyy-MM-dd hh:mm a' }}</td>
                <td>{{customer.remarks}}</td>
                
             </tr>
             
          </tbody>
       </table>
+      <dir-pagination-controls  maxsize="5" direction-links="true" boundary-links="true" ></dir-pagination-controls>
    </div>
    <!-- END table-responsive-->
    

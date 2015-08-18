@@ -35,7 +35,7 @@ namespace API.Controllers.Customers
                              ImageSource = c.ImageSource,
                              Remarks = c.Remarks,
                              Appointments = from a in c.CustomerAppointments
-                                           orderby a.Start
+                                           orderby a.Start descending
                                            select new AppointmentOutModel 
                                            {
                                               AppointmentId=a.AppointmentId,

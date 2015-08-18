@@ -57,9 +57,13 @@
       
       <hr class="hidden-print" />
       <div class="clearfix">
-         <button type="button" class="btn btn-info pull-left mr">Edit Qualification</button>
-         <button type="button" class="btn btn-success pull-right">Add New Qualification</button>
+         <button type="submit" class="btn btn-pill-left btn-info" ng-click="editQualifications()">Edit Qualifications</button>
+         <button type="submit" class="btn btn-pill-right btn-danger" ng-click="deleteService(service.serviceId)">Delete Service</button>
       </div>
    </div>
 </div>  
 <a ui-sref='app.services.list'>Back</a>
+
+<script type="text/ng-template" id="modalDialogId">
+      <div class="ngdialog-message"><h3>Delete this service?</h3><p><code>Please note</code> that this will permanently remove this service from the database.<br/><br/><button type="button" ng-click="confirm(confirmValue)" class="btn btn-danger btn-oval mr">Delete</button><button type="button" ng-click="closeThisDialog('button')" class="btn btn-oval btn-default">Cancel</button></div>
+</script>

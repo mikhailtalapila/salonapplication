@@ -115,14 +115,15 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
         url:"/customerslist",
         title:'Customers list',
         controller:'CustomersListCtrl',
-        templateUrl:helper.basepath('customers/customersList.html')
+        templateUrl:helper.basepath('customers/customersList.html'),
+        resolve: helper.resolveFor('angularUtils.directives.dirPagination')
     })
     .state('app.customers.details',{
         url:'/customersdetails/:id',
         title:'Customer details',
         controller:'CustomersDetailsCtrl',
         templateUrl:helper.basepath('customers/customersDetails.html'),
-        resolve: helper.resolveFor('xeditable')
+        resolve: helper.resolveFor('xeditable','ui-notification','ngDialog')
     })
     .state('app.newcustomer',{
         url:'/newcustomer',
@@ -190,7 +191,8 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
         url:"/servicesdetails/:id",
         title:'Service details',
         templateUrl: helper.basepath('services/servicesDetails.html'),
-        controller:'ServicesDetailsCtrl'
+        controller:'ServicesDetailsCtrl',
+        resolve:helper.resolveFor('ui-notification','ngDialog')
     })
     .state('app.newService',{
         url:"/newservice",
@@ -435,6 +437,8 @@ App
     modules: [
       {name: 'toaster',                   files: ['vendor/angularjs-toaster/toaster.js',
                                                  'vendor/angularjs-toaster/toaster.css']},
+      {name:  'angularUtils.directives.dirPagination',
+                                          files: ['vendor/angularUtils/dirPagination.js']},
       {name: 'ui-notification',           files: ['vendor/angular-ui-notification/angular-ui-notification.min.js',
                                                  'vendor/angular-ui-notification/angular-ui-notification.min.css']},
       {name: 'localytics.directives',     files: ['vendor/chosen_v1.2.0/chosen.jquery.min.js',

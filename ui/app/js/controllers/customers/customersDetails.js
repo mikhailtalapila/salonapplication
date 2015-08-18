@@ -1,6 +1,6 @@
 'use strict';
-App.controller('CustomersDetailsCtrl', ['$scope',  '$http','$state','$stateParams','customerDataFactory','editableOptions', 'editableThemes', '$filter',
-  function($scope,  $http, $state, $stateParams, customerDataFactory, editableOptions, editableThemes, $filter) {
+App.controller('CustomersDetailsCtrl', ['$scope',  '$http','$state','$stateParams','customerDataFactory','editableOptions', 'editableThemes', '$filter', 'Notification', 'ngDialog',
+  function($scope,  $http, $state, $stateParams, customerDataFactory, editableOptions, editableThemes, $filter, Notification,ngDialog) {
 
   	getCustomer();
     editableOptions.theme = 'bs3';
@@ -45,11 +45,26 @@ App.controller('CustomersDetailsCtrl', ['$scope',  '$http','$state','$stateParam
 
   	$scope.updateCustomer=function() {
   		return customerDataFactory.updateCustomer($scope.customer);
-  	}
-  	
-
+  	};
+  	    
     
-
+    $scope.deleteCustomer = function (id) {
+    ngDialog.openConfirm({
+      template: 'modalDialogId',
+      className: 'ngdialog-theme-default'
+    }).then(function () {
+      customerDataFactory.deleteCustomer(id)
+        .success(function() {
+          Notification.error('Customer is deleted.');
+          $state.go('app.customers.list');
+        })
+        .error(function(error) {
+          Notification.error('Unable to delete customer: '+error.message);
+        });
+    }, function () {
+      
+    });
+  };
  
 
 }]);

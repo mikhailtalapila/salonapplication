@@ -1,5 +1,6 @@
 'use strict';
-App.controller('CustomersListCtrl', ['$http','$scope','$state','$modal','modalService','customerDataFactory',function ($http,$scope,$state,$modal,modalService,customerDataFactory){
+App.controller('CustomersListCtrl', ['$http','$scope','$state','$modal','modalService','customerDataFactory',
+  function ($http,$scope,$state,$modal,modalService,customerDataFactory){
   	
     $scope.$on('$stateChangeSuccess',function(){
       if ($state.is('app.customers.list'))
@@ -23,6 +24,11 @@ App.controller('CustomersListCtrl', ['$http','$scope','$state','$modal','modalSe
         .error(function(error){
           $scope.status='Unable to load customer data: '+error.message;
         });
+    };
+
+    $scope.sort = function(keyname){
+        $scope.sortKey = keyname;   
+        $scope.reverse = !$scope.reverse; 
     };
 
   	$scope.addNewCustomer=function() {

@@ -55,20 +55,5 @@ App.controller('ServicesListCtrl', ['$scope','$http','$state','serviceDataFactor
         });
     };
 
-    $scope.deleteService=function(id) {
-      serviceDataFactory.deleteService(id)
-        .success(function() {
-          $scope.status='Service is deleted. Refreshing service list';
-          for (var i = 0; i < $scope.services.length; i++) {
-            var curServ=$scope.services[i];
-            if(curServ.serviceId===id) {
-              $scope.services.splice(i,1);
-              break;
-            }
-          }
-        })
-        .error(function(error){
-          $scope.status='Unable to delete service: '+error.message;
-        });
-    }    ;
+    
   }]);

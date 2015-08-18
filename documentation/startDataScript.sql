@@ -2100,7 +2100,273 @@ INSERT INTO [dbo].[Appointments]
            ,0
            ,'Appointment confirmed on september 11 at 16:00'
            ,1
-           ,'Remarks for Lena appointment #3');		   		      
+           ,'Remarks for Lena appointment #3');	
+
+
+--Additional customers
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Teresa'
+           ,'Crowder'
+           ,'7321115599'
+           ,'9087778855'
+           ,'teresacrowder@email.com'
+           ,'f'
+           ,'Some remarks for Teresa Crowder');
+		   
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Bette'
+           ,'Laporta'
+           ,'7321116655'
+           ,'9087775511'
+           ,'bettelaporta@email.com'
+           ,'f'
+           ,'Some remarks for Bette Laporta');
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Kaley'
+           ,'Hiller'
+           ,'7321116985'
+           ,'9087771254'
+           ,'kaleyhillder@email.com'
+           ,'f'
+           ,'Some remarks for Kaley Hiller');
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Sharlene'
+           ,'Heared'
+           ,'7321111254'
+           ,'9087774568'
+           ,'sharleneheared@email.com'
+           ,'f'
+           ,'Some remarks for Sharlene Heared');
+
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Iola'
+           ,'Blas'
+           ,'7321119632'
+           ,'9087771587'
+           ,'iolablas@email.com'
+           ,'f'
+           ,'Some remarks for Iola Blas');
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('China'
+           ,'Sloana'
+           ,'7321114587'
+           ,'9087745697'
+           ,'chinasloana@email.com'
+           ,'f'
+           ,'Some remarks for China Sloana');
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Kaiko'
+           ,'Salim'
+           ,'7124514587'
+           ,'9087745627'
+           ,'kaikosalim@email.com'
+           ,'m'
+           ,'Some remarks for Kaiko Salim');
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Rivka'
+           ,'Vine'
+           ,'7124125887'
+           ,'9087744568'
+           ,'rivkavine@email.com'
+           ,'f'
+           ,'Some remarks for Rivka Vine');
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Deana'
+           ,'Hendrin'
+           ,'7124568887'
+           ,'9084569568'
+           ,'dianahendrin@email.com'
+           ,'f'
+           ,'Some remarks for Diana Hendrin');
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Marybelle'
+           ,'Bowden'
+           ,'7124561234'
+           ,'9084560000'
+           ,'marybellebowden@email.com'
+           ,'f'
+           ,'Some remarks for Marybelle Bowden');
+
+
+
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Darren'
+           ,'Henn'
+           ,'7111221234'
+           ,'9088770000'
+           ,'darrenhenn@email.com'
+           ,'m'
+           ,'Some remarks for Darren Henn');
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Deidre'
+           ,'Davenport'
+           ,'7111200004'
+           ,'9088711110'
+           ,'deidredavenport@email.com'
+           ,'f'
+           ,'Some remarks for Deidre Davenport');
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Sue'
+           ,'Cristina'
+           ,'7111111104'
+           ,'9088777710'
+           ,'suecristina@email.com'
+           ,'f'
+           ,'Some remarks for Sue Cristina');
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Pei'
+           ,'Ishmael'
+           ,'7113333104'
+           ,'9088712330'
+           ,'peiishmael@email.com'
+           ,'f'
+           ,'Some remarks for Pei Ishmael');
+
+INSERT INTO [dbo].[Customers]
+           ([FirstName]
+           ,[LastName]
+           ,[PhoneNumber]
+           ,[AlternatePhoneNumber]
+           ,[Email]
+           ,[Gender]
+           ,[Remarks])
+     VALUES
+           ('Sherril'
+           ,'Kirkley'
+           ,'7114455104'
+           ,'9084455330'
+           ,'sherrilkirkley@email.com'
+           ,'f'
+           ,'Some remarks for Sherril Kirkley');
+
+		   
+
+
+--End of additional customers		   
 GO
 
 

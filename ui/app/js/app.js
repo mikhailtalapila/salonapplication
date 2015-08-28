@@ -249,6 +249,12 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
       templateUrl: helper.basepath('reports/reportsDetails.html'),
       controller:'ReportsDetailsCtrl'
     })
+    .state('app.notes',{
+      url:'/notes',
+      title:'Notes',
+      templateUrl: helper.basepath('notes.html'),
+      controller:'NotesCtrl'
+    })
     // Single Page Routes
     // ----------------------------------- 
     .state('page', {

@@ -192,6 +192,7 @@
     <Compile Include="Controllers\EmployeeSchedules\EmployeeScheduleModel.cs" />
     <Compile Include="Controllers\Employees\EmployeesController.cs" />
     <Compile Include="Controllers\Employees\EmployeeModel.cs" />
+    <Compile Include="Controllers\Notes\NotesController.cs" />
     <Compile Include="Controllers\Qualifications\QualificationController.cs" />
     <Compile Include="Controllers\Qualifications\QualificationModel.cs" />
     <Compile Include="Controllers\ServiceTypes\ServiceTypesController.cs" />

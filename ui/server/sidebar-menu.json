@@ -1,9 +1,4 @@
-[
-  {
-    "text": "Navigation",
-    "heading": "true",
-    "translate": "sidebar.heading.HEADER"
-  },
+[  
   {
     "text": "Customers",
     "sref": "app.customers",

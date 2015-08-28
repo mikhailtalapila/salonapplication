@@ -50,6 +50,7 @@
     <Compile Include="Configuration\CustomerConfiguration.cs" />
     <Compile Include="Configuration\EmployeeConfiguration.cs" />
     <Compile Include="Configuration\EmployeeScheduleConfiguration.cs" />
+    <Compile Include="Configuration\NoteConfiguration.cs" />
     <Compile Include="Configuration\QualificationConfiguration.cs" />
     <Compile Include="Configuration\SalonScheduleConfiguration.cs" />
     <Compile Include="Configuration\ServiceConfiguration.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeSchedule.cs" />
+    <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Qualification.cs" />
     <Compile Include="Models\SalonSchedule.cs" />
     <Compile Include="Models\Service.cs" />

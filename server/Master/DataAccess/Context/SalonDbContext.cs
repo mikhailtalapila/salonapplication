@@ -39,6 +39,7 @@ namespace DataAccess.Context
          modelBuilder.Configurations.Add(new ServiceTypeConfiguration());
          modelBuilder.Configurations.Add(new TimeSlotConfiguration());
          modelBuilder.Configurations.Add(new SalonScheduleConfiguration());
+         modelBuilder.Configurations.Add(new NoteConfiguration());
       }
 
       public DbSet<Appointment> Appointments { get; set; }
@@ -50,5 +51,6 @@ namespace DataAccess.Context
       public DbSet<ServiceType> ServiceTypes { get; set; }
       public DbSet<TimeSlot> TimeSlots { get; set; }
       public DbSet<SalonSchedule> SalonSchedules { get; set; }
+      public DbSet<Note> Notes { get; set; }
    }
 }

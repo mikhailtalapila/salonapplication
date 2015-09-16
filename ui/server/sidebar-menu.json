@@ -1,4 +1,9 @@
-[  
+[ 
+  {
+    "text": "Calendar",
+    "sref": "app.calendar",
+    "icon": "icon-calendar"
+  },
   {
     "text": "Customers",
     "sref": "app.customers",

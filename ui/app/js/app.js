@@ -26,7 +26,9 @@ var App = angular.module('desktopApp', [
     'ngSanitize',
     'ngResource',
     'tmh.dynamicLocale',
-    'ui.utils'
+    'ui.utils',
+    'mwl.calendar',
+    'ngTouch'
   ]);
 
 App.run(["$rootScope", "$state", "$stateParams",  '$window', '$templateCache', function ($rootScope, $state, $stateParams, $window, $templateCache) {
@@ -86,7 +88,7 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
   $locationProvider.html5Mode(false);
 
   // defaults to dashboard
-  $urlRouterProvider.otherwise('/app/customers');
+  $urlRouterProvider.otherwise('/app/calendar');
 
   // 
   // Application Routes
@@ -98,6 +100,20 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
         templateUrl: helper.basepath('app.html'),
         controller: 'AppController',
         resolve: helper.resolveFor('fastclick', 'modernizr', 'icons', 'screenfull', 'animo', 'sparklines', 'slimscroll', 'classyloader', 'toaster', 'whirl')
+    })
+     .state('app.calendar', {
+        url:'/calendar',
+        title:'Calendar',
+        controller:'CalendarCtrl',
+        templateUrl:helper.basepath('calendar/calendar.html'),
+        resolve: helper.resolveFor('moment','interact','angular-bootstrap-calendar')
+    })
+    .state('app.calendar.dailyCalendar', {
+        url:'/dailyCalendar',
+        title:'Calendar',
+        controller:'DailyCalendarCtrl',
+        templateUrl:helper.basepath('calendar/dailyCalendar.html'),
+        resolve: helper.resolveFor('moment','interact','angular-bootstrap-calendar')
     })
     .state('app.dashboard', {
         url: '/dashboard',
@@ -253,7 +269,8 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
       url:'/notes',
       title:'Notes',
       templateUrl: helper.basepath('notes.html'),
-      controller:'NotesCtrl'
+      controller:'NotesCtrl',
+      resolve: helper.resolveFor('ui-notification')
     })
     // Single Page Routes
     // ----------------------------------- 
@@ -324,7 +341,13 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
     $translateProvider.preferredLanguage('en');
     $translateProvider.useLocalStorage();
     $translateProvider.usePostCompiling(true);
-
+}]).config(['calendarConfigProvider',function(calendarConfigProvider) {
+    calendarConfigProvider.setDateFormatter('moment');
+    calendarConfigProvider.setI18nStrings({
+        eventsLabel: '', //This will set the events label on the day view
+        timeLabel: '' //This will set the time label on the time view
+      });
+    calendarConfigProvider.setDisplayEventEndTimes(true)
 }]).config(['tmhDynamicLocaleProvider', function (tmhDynamicLocaleProvider) {
 
     tmhDynamicLocaleProvider.localeLocationPattern('vendor/angular-i18n/angular-locale_{{locale}}.js');
@@ -437,7 +460,9 @@ App
                              'vendor/morris.js/morris.js',
                              'vendor/morris.js/morris.css'],
       'loaders.css':          ['vendor/loaders.css/loaders.css'],
-      'spinkit':              ['vendor/spinkit/css/spinkit.css']
+      'spinkit':              ['vendor/spinkit/css/spinkit.css'],
+      'angular-bootstrap-calendar': ['vendor/angular-bootstrap-calendar/angular-bootstrap-calendar-tpls.min.js',
+                                                 'vendor/angular-bootstrap-calendar/angular-bootstrap-calendar.min.css']
     },
     // Angular based script (use the right module name)
     modules: [
@@ -447,6 +472,10 @@ App
                                           files: ['vendor/angularUtils/dirPagination.js']},
       {name: 'ui-notification',           files: ['vendor/angular-ui-notification/angular-ui-notification.min.js',
                                                  'vendor/angular-ui-notification/angular-ui-notification.min.css']},
+      {name: 'angular-bootstrap-calendar',
+                                          files: ['vendor/angular-bootstrap-calendar/angular-bootstrap-calendar-tpls.min.js',
+                                                 'vendor/angular-bootstrap-calendar/angular-bootstrap-calendar.min.css']},
+      {name: 'interact',                  files: ['vendor/interact/interact.min.js']},
       {name: 'localytics.directives',     files: ['vendor/chosen_v1.2.0/chosen.jquery.min.js',
                                                  'vendor/chosen_v1.2.0/chosen.min.css',
                                                  'vendor/angular-chosen-localytics/chosen.js']},

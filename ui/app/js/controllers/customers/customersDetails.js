@@ -42,6 +42,10 @@ App.controller('CustomersDetailsCtrl', ['$scope',  '$http','$state','$stateParam
     }
   	});
 
+    $scope.addAppointment=function() {
+      $state.go('app.calendar.dailyCalendar');
+    }
+
 
   	$scope.updateCustomer=function() {
   		return customerDataFactory.updateCustomer($scope.customer);

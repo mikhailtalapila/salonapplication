@@ -94,6 +94,39 @@ namespace API.Controllers.Customers
           if (cust == null) throw new HttpResponseException(HttpStatusCode.NotFound);
           return Request.CreateResponse<CustomerModel>(HttpStatusCode.OK, cust);
        }
+
+       [HttpGet]
+       [Route("customers/{customerId:int}/appointments")]
+       public HttpResponseMessage Appointments(int customerId)
+       {
+          var customer = _db.Customers.FirstOrDefault(c => c.CustomerId == customerId);
+          var appointments = from appt in customer.CustomerAppointments
+                             orderby appt.Start
+                             select new AppointmentOutModel
+                                {
+                                   AppointmentId = appt.AppointmentId,
+                                   CustomerFirstName = appt.Customer.FirstName,
+                                   CustomerLastName = appt.Customer.LastName,
+                                   EmployeeFirstName = appt.Employee.FirstName,
+                                   EmployeeLastName = appt.Employee.LastName,
+                                   ServiceName = appt.Service.ServiceName,
+                                   ServicePrice = appt.Service.Price,
+                                   AppointmentStartTime = appt.Start,
+                                   AppointmentDurationInMins = appt.Duration,
+                                   CustomerPaid = appt.Paid,
+                                   AppointmentConfirmation = appt.Confirmation,
+                                   IsEmployeeRequested = appt.EmployeeRequested,
+                                   AppointmentRemarks = appt.Remarks
+                                };
+
+          if (appointments == null)
+          {
+             throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+          }
+          return Request.CreateResponse<IEnumerable<AppointmentOutModel>>(HttpStatusCode.OK,appointments);
+       }
+
+       
        
        // POST api/customers 
        public HttpResponseMessage Post([FromBody] CustomerModel value)

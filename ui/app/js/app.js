@@ -27,8 +27,7 @@ var App = angular.module('desktopApp', [
     'ngResource',
     'tmh.dynamicLocale',
     'ui.utils',
-    'mwl.calendar',
-    'ngTouch'
+    'mwl.calendar'
   ]);
 
 App.run(["$rootScope", "$state", "$stateParams",  '$window', '$templateCache', function ($rootScope, $state, $stateParams, $window, $templateCache) {
@@ -106,14 +105,14 @@ function ($stateProvider, $locationProvider, $urlRouterProvider, helper) {
         title:'Calendar',
         controller:'CalendarCtrl',
         templateUrl:helper.basepath('calendar/calendar.html'),
-        resolve: helper.resolveFor('moment','interact','angular-bootstrap-calendar')
+        resolve: helper.resolveFor('moment','interact','angular-bootstrap-calendar','ngDialog')
     })
     .state('app.calendar.dailyCalendar', {
         url:'/dailyCalendar',
         title:'Calendar',
         controller:'DailyCalendarCtrl',
         templateUrl:helper.basepath('calendar/dailyCalendar.html'),
-        resolve: helper.resolveFor('moment','interact','angular-bootstrap-calendar')
+        resolve: helper.resolveFor('moment','interact','angular-bootstrap-calendar','ngDialog')
     })
     .state('app.dashboard', {
         url: '/dashboard',

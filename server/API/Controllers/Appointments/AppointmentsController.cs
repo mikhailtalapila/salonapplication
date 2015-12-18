@@ -2,6 +2,8 @@
 using DataAccess.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -17,18 +19,24 @@ namespace API.Controllers.Appointments
        }
 
        // GET /api/appointments
-       public HttpResponseMessage Get()
+       public HttpResponseMessage Get([FromUri]TimePeriod period)
        {
+          
           var appointments = from a in _db.Appointments
                              orderby a.Start
+                             where (a.Start>=period.StartTime &&
+                                    DbFunctions.AddMinutes(a.Start,a.Duration)<period.EndTime)
                              select new AppointmentOutModel
                              {
                                 AppointmentId = a.AppointmentId,
+                                CustomerId=a.CustomerId,
                                 CustomerFirstName = a.Customer.FirstName,
                                 CustomerLastName = a.Customer.LastName,
                                 CustomerPhoneNumber=a.Customer.PhoneNumber,
+                                EmployeeId=a.EmployeeId,
                                 EmployeeFirstName = a.Employee.FirstName,
                                 EmployeeLastName = a.Employee.LastName,
+                                ServiceId=a.ServiceId,
                                 ServiceName = a.Service.ServiceName,
                                 ServicePrice = a.Service.Price,
                                 AppointmentStartTime = a.Start,
@@ -51,11 +59,14 @@ namespace API.Controllers.Appointments
           var appt = new AppointmentOutModel
            {
              AppointmentId = appointment.AppointmentId,
+             CustomerId=appointment.CustomerId,
              CustomerFirstName = appointment.Customer.FirstName,
              CustomerLastName = appointment.Customer.LastName,
              CustomerPhoneNumber=appointment.Customer.PhoneNumber,
+             EmployeeId=appointment.EmployeeId,
              EmployeeFirstName = appointment.Employee.FirstName,
              EmployeeLastName = appointment.Employee.LastName,
+             ServiceId=appointment.ServiceId,
              ServiceName = appointment.Service.ServiceName,
              ServicePrice = appointment.Service.Price,
              AppointmentStartTime = appointment.Start,

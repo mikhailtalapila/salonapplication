@@ -9,11 +9,12 @@ using DataAccess.Models;
 
 namespace DataAccess.SampleData
 {
-   public class SalonSchedulerDatabaseInitializer: DropCreateDatabaseIfModelChanges<SalonDbContext>
+   public class SalonSchedulerDatabaseInitializer:CreateDatabaseIfNotExists<SalonDbContext> // DropCreateDatabaseIfModelChanges<SalonDbContext>
    {
       protected override void Seed(SalonDbContext context)
       {
-         //customers         
+         //customers  
+         /*
          Customer customer1 = new Customer();
          customer1.FirstName = "Larry";
          customer1.LastName = "Smith";
@@ -1109,12 +1110,13 @@ namespace DataAccess.SampleData
                }
             }
             );
+          
       
          //qualifications added using the script
          //appointments added using the script
 
          base.Seed(context);
-                  
+          */
       }
    }
 }

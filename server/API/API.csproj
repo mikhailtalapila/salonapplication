@@ -186,6 +186,7 @@
     <Compile Include="Controllers\Appointments\AppointmentOutModel.cs" />
     <Compile Include="Controllers\Appointments\AppointmentsController.cs" />
     <Compile Include="Controllers\Appointments\AppointmentInModel.cs" />
+    <Compile Include="Controllers\Appointments\TimePeriod.cs" />
     <Compile Include="Controllers\Customers\CustomersController.cs" />
     <Compile Include="Controllers\Customers\CustomerModel.cs" />
     <Compile Include="Controllers\EmployeeSchedules\EmployeeScheduleController.cs" />
@@ -235,9 +236,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -246,7 +244,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
